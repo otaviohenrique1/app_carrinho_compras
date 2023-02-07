@@ -1,7 +1,9 @@
+import { AppBar } from "../components/AppBar";
+
 export function FinalizarCompra() {
   return (
     <div>
-      <h1>FinalizarCompra</h1>
+      <AppBar titulo="FinalizarCompra" />
     </div>
   );
 }

@@ -1,9 +1,18 @@
+export interface ListaProdutosTypes {
+  id: number;
+  nome: string;
+  preco: number;
+  categoria: string;
+  descricao: string;
+  imagem: string[];
+}
+
 export const listaProdutos = [
   {
     "id": 1,
     "nome": "Leite de vaca",
-    "categoria": "Bebida",
     "preco": 5,
+    "categoria": "Bebida",
     "descricao":
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
@@ -288,6 +297,7 @@ export const listaProdutos = [
     "id": 20,
     "nome": "Cola 40g",
     "preco": 6.2,
+    "categoria": "Material Escolar",
     "descricao":
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [

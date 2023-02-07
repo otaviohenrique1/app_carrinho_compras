@@ -1,7 +1,9 @@
+import { AppBar } from "../components/AppBar";
+
 export function CarrinhoCompras() {
   return (
     <div>
-      <h1>CarrinhoCompras</h1>
+      <AppBar titulo="CarrinhoCompras" />
     </div>
   );
 }

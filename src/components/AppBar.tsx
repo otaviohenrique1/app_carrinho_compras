@@ -16,8 +16,6 @@ export function AppBar(props: AppBarProps) {
   );
 }
 
-
-
 const AppBarNav = styled.nav`
   padding: 15px 20px;
   background-color: cadetblue;
