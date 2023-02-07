@@ -9,7 +9,7 @@ export function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/produtos" element={<DetalhesProduto />} />
+        <Route path="/produtos/:id" element={<DetalhesProduto />} />
         <Route path="/carrinho" element={<CarrinhoCompras />} />
         <Route path="/finalizar" element={<FinalizarCompra />} />
       </Routes>
