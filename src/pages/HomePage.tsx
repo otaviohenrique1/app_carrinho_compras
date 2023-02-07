@@ -18,8 +18,22 @@ export function HomePage() {
                   <p>{formatadorMonetario(item.preco)}</p>
                 </ItemDados>
                 <ItemBotoes>
-                  <button>+ Carrinho</button>
-                  <button>Ver Detalhes</button>
+                  <Botao
+                    color="#008000"
+                    font_color="#ffffff"
+                    color_hover="#00cc00"
+                    font_color_hover="#000000"
+                    color_active="#003300"
+                    font_color_active="#ffffff"
+                  >+ Carrinho</Botao>
+                  <Botao
+                    color="#800080"
+                    font_color="#ffffff"
+                    color_hover="#ff33ff"
+                    font_color_hover="#000000"
+                    color_active="#4d004d"
+                    font_color_active="#ffffff"
+                  >Ver Detalhes</Botao>
                 </ItemBotoes>
               </Item>
             );
@@ -37,7 +51,7 @@ const Main = styled.main`
 const Item = styled.li`
   padding: 5px;
   margin-bottom: 10px;
-  background-color: coral;
+  background-color: #b3ffec;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
 
@@ -65,4 +79,41 @@ const ItemDados = styled.div`
 const ItemBotoes = styled.div`
   /* display: flex;
   flex-direction: column; */
+  justify-content: center;
+  margin-right: 10px;
+
+  button:first-child {
+    margin-bottom: 10px;
+  }
 `;
+
+interface BotaoStyleProps {
+  color: string;
+  font_color: string;
+  color_hover: string;
+  font_color_hover: string;
+  color_active: string;
+  font_color_active: string;
+}
+
+const Botao = styled.button<BotaoStyleProps>`
+  padding: 10px;
+  border: 1px solid ${(props) => props.color};
+  border-radius: 8px;
+  background-color: ${(props) => props.color};
+  color: ${(props) => props.font_color};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.color_hover};
+    border-color: ${(props) => props.color_hover};
+    color: ${(props) => props.font_color_hover};
+  }
+
+  &:active {
+    background-color: ${(props) => props.color_active};
+    border-color: ${(props) => props.color_active};
+    color: ${(props) => props.font_color_active};
+  }
+`;
+

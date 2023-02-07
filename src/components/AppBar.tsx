@@ -25,7 +25,7 @@ const AppBarNav = styled.nav`
 `;
 
 const AppBarH1 = styled.h1`
-  color: white;
+  color: #ffffff;
   font-size: 25px;
   font-weight: bold;
 `;
@@ -35,18 +35,18 @@ const AppBarLink = styled(Link)`
   border: 1px solid blue;
   border-radius: 8px;
   text-decoration: none;
-  background-color: blue;
-  color: white;
+  background-color: #0000cc;
+  color: #ffffff;
 
   &:hover {
     background-color: lightblue;
     border-color: lightblue;
-    color: black;
+    color: #000000;
   }
 
   &:active {
     background-color: darkblue;
     border-color: darkblue;
-    color: white;
+    color: #ffffff;
   }
 `;
