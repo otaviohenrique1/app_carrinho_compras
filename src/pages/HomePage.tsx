@@ -4,6 +4,8 @@ import { listaProdutos } from "../utils/listaProdutos";
 import { formatadorMonetario } from "../utils/formatadores";
 import { Botao } from "../components/Botao";
 import { Link } from "react-router-dom";
+import { Main } from "../components/Main";
+import { Imagem } from "../components/Imagem";
 
 export function HomePage() {
   return (
@@ -14,7 +16,7 @@ export function HomePage() {
           {listaProdutos.map((item, index) => {
             return (
               <Item key={index}>
-                <ItemImagem src={item.imagem[0]} alt={item.nome} />
+                <Imagem src={item.imagem[0]} alt={item.nome} />
                 <ItemDados>
                   <p>{item.nome}</p>
                   <p>{formatadorMonetario(item.preco)}</p>
@@ -28,7 +30,7 @@ export function HomePage() {
                     color_active="#003300"
                     font_color_active="#ffffff"
                   >+ Carrinho</Botao>
-                  <Link to="/produtos/1">
+                  <Link to={`/produtos/${item.id}`}>
                     <Botao
                       color="#800080"
                       font_color="#ffffff"
@@ -48,10 +50,6 @@ export function HomePage() {
   );
 }
 
-const Main = styled.main`
-  padding: 15px 25px;
-`;
-
 const Item = styled.li`
   padding: 5px;
   margin-bottom: 10px;
@@ -63,11 +61,6 @@ const Item = styled.li`
     display: flex;
     flex-direction: column;
   }
-`;
-
-const ItemImagem = styled.img`
-  width: 100%;
-  max-width: 20rem;
 `;
 
 const ItemDados = styled.div`
