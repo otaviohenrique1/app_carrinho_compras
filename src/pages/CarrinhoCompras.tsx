@@ -7,6 +7,7 @@ import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso } from "../components/Modal";
+import { ItemBotoes } from "../components/ItemBotoes";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
@@ -84,6 +85,24 @@ export function CarrinhoCompras() {
                     <p>{item.nome}</p>
                     <p>{formatadorMonetario(item.preco)}</p>
                   </ItemDados>
+                  <ItemBotoes>
+                    <Botao
+                      color="#008000"
+                      font_color="#ffffff"
+                      color_hover="#00cc00"
+                      font_color_hover="#000000"
+                      color_active="#003300"
+                      font_color_active="#ffffff"
+                    >Carrinho</Botao>
+                    <Botao
+                      color="#008000"
+                      font_color="#ffffff"
+                      color_hover="#00cc00"
+                      font_color_hover="#000000"
+                      color_active="#003300"
+                      font_color_active="#ffffff"
+                    >Carrinho</Botao>
+                  </ItemBotoes>
                 </CarrinhoListaItem>
               );
             })}
@@ -105,11 +124,10 @@ const CarrinhoLista = styled.div`
 `;
 
 const CarrinhoListaItem = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   gap: 10px;
   background-color: coral;
-  align-items: center;
   padding: 10px;
   border-radius: 10px;
 `;

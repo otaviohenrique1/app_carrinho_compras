@@ -6,6 +6,7 @@ import { Botao } from "../components/Botao";
 import { Link } from "react-router-dom";
 import { Main } from "../components/Main";
 import { Imagem, ItemImagem } from "../components/Imagem";
+import { ItemBotoes } from "../components/ItemBotoes";
 
 export function HomePage() {
   return (
@@ -58,15 +59,12 @@ const Item = styled.li`
   background-color: #b3ffec;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-
-  div {
-    display: flex;
-    flex-direction: column;
-  }
 `;
 
 const ItemDados = styled.div`
   padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 
   p {
@@ -76,10 +74,4 @@ const ItemDados = styled.div`
   p:first-child {
     margin-bottom: 15px;
   }
-`;
-
-const ItemBotoes = styled.div`
-  justify-content: center;
-  margin-right: 10px;
-  gap: 5px
 `;
