@@ -66,12 +66,9 @@ const ItemDados = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 15px;
 
   p {
     font-size: 20px;
-  }
-
-  p:first-child {
-    margin-bottom: 15px;
   }
 `;

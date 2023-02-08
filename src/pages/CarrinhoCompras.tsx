@@ -84,6 +84,13 @@ export function CarrinhoCompras() {
                   <ItemDados>
                     <p>{item.nome}</p>
                     <p>{formatadorMonetario(item.preco)}</p>
+                    <p>
+                      <span style={{
+                        fontWeight: "bold",
+                        marginRight: "5px",
+                      }}>Quantidade:</span>
+                      <span>{10}</span>
+                    </p>
                   </ItemDados>
                   <ItemBotoes>
                     <Botao
@@ -93,15 +100,23 @@ export function CarrinhoCompras() {
                       font_color_hover="#000000"
                       color_active="#003300"
                       font_color_active="#ffffff"
-                    >Carrinho</Botao>
-                    <Botao
-                      color="#008000"
+                    >Adicionar</Botao>
+                    <BotaoStyled
+                      color="#800080"
                       font_color="#ffffff"
-                      color_hover="#00cc00"
+                      color_hover="#ff33ff"
                       font_color_hover="#000000"
-                      color_active="#003300"
+                      color_active="#4d004d"
                       font_color_active="#ffffff"
-                    >Carrinho</Botao>
+                    >Remover</BotaoStyled>
+                    <Botao
+                      color="#ff0000"
+                      font_color="#ffffff"
+                      color_hover="#ff8080"
+                      font_color_hover="#000000"
+                      color_active="#800000"
+                      font_color_active="#ffffff"
+                    >Excluir</Botao>
                   </ItemBotoes>
                 </CarrinhoListaItem>
               );
@@ -134,14 +149,13 @@ const CarrinhoListaItem = styled.div`
 
 const ItemDados = styled.div`
   padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 10px;
 
   p {
     font-size: 20px;
-  }
-
-  p:first-child {
-    margin-bottom: 15px;
   }
 `;
 
