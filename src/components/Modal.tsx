@@ -16,8 +16,28 @@ export function ModalAviso(props: ModalAvisoProps) {
     html: <p>{mensagem}</p>,
     showCancelButton: true,
     confirmButtonText: 'Sim',
-    cancelButtonText: 'Não',
     confirmButtonColor: "blue",
-    cancelButtonColor: "red"
+    cancelButtonText: 'Não',
+    cancelButtonColor: "red",
+  });
+}
+
+export function ModalQuantidade(props: ModalAvisoProps) {
+  const SwalModal = withReactContent(Swal);
+  const { titulo, mensagem } = props;
+
+  return SwalModal.fire({
+    icon: "question",
+    title: <p>{titulo}</p>,
+    html: <p>{mensagem}</p>,
+    input: "number",
+    inputAttributes: {
+      min: "1",
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Salvar',
+    confirmButtonColor: "blue",
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: "red",
   });
 }

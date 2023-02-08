@@ -6,7 +6,7 @@ import { formatadorMonetario } from "../utils/formatadores";
 import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
-import { ModalAviso } from "../components/Modal";
+import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { ItemBotoes } from "../components/ItemBotoes";
 
 export function CarrinhoCompras() {
@@ -94,22 +94,44 @@ export function CarrinhoCompras() {
                   </ItemDados>
                   <ItemBotoes>
                     <Botao
-                      color="#008000"
-                      font_color="#ffffff"
-                      color_hover="#00cc00"
-                      font_color_hover="#000000"
-                      color_active="#003300"
-                      font_color_active="#ffffff"
-                    >Adicionar</Botao>
-                    <Botao
+                      onClick={() => {
+                        ModalQuantidade({
+                          titulo: "Quantidade",
+                          mensagem: "Quanto você que adicionar?",
+                        })
+                      }}
                       color="#800080"
                       font_color="#ffffff"
                       color_hover="#ff33ff"
                       font_color_hover="#000000"
                       color_active="#4d004d"
                       font_color_active="#ffffff"
+                    >Adicionar</Botao>
+                    <Botao
+                      onClick={() => {
+                        ModalQuantidade({
+                          titulo: "Quantidade",
+                          mensagem: "Quanto você que adicionar?",
+                        })
+                      }}
+                      color="#ffa500"
+                      font_color="#ffffff"
+                      color_hover="#ffd280"
+                      font_color_hover="#000000"
+                      color_active="#805300"
+                      font_color_active="#ffffff"
                     >Remover</Botao>
                     <Botao
+                      onClick={() => {
+                        ModalAviso({
+                          titulo: "Aviso",
+                          mensagem: "Deseja remover o produto?",
+                        }).then(({ isConfirmed }) => {
+                          if (isConfirmed) {
+                            /* Logica que remove o produto do carrinho de compras */
+                          }
+                        })
+                      }}
                       color="#ff0000"
                       font_color="#ffffff"
                       color_hover="#ff8080"
