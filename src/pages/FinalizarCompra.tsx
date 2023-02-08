@@ -1,7 +1,7 @@
 import { FormikHelpers } from "formik/dist/types";
 import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
-import { Formik, Field, Form } from "formik";
+import { Formik, Form } from "formik";
 import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
 
@@ -47,42 +47,36 @@ export function FinalizarCompra() {
                     }}
                   >
                     <Radio
-                      htmlFor="cartao"
                       name="metodo_pagamento"
                       id="cartao"
                       value="cartao"
                       label={"Cartão"}
                     />
                     <Radio
-                      htmlFor="boleto"
                       name="metodo_pagamento"
                       id="boleto"
                       value="boleto"
                       label={"Boleto"}
                     />
                     <Radio
-                      htmlFor="pix"
                       name="metodo_pagamento"
                       id="pix"
                       value="pix"
                       label={"Pix"}
                     />
                     <Radio
-                      htmlFor="paypal"
                       name="metodo_pagamento"
                       id="paypal"
                       value="paypal"
                       label={"Paypal"}
                     />
                     <Radio
-                      htmlFor="credito_loja"
                       name="metodo_pagamento"
                       id="credito_loja"
                       value="credito_loja"
                       label={"Credito na loja"}
                     />
                     <Radio
-                      htmlFor="transferencia"
                       name="metodo_pagamento"
                       id="transferencia"
                       value="transferencia"
