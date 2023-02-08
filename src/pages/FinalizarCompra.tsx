@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
 import styled from "styled-components";
+import { formatadorMonetario } from "../utils/formatadores";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -19,12 +20,17 @@ export function FinalizarCompra() {
     // 
   }
 
+  const total = 100;
+
   return (
     <>
-      <AppBar titulo="FinalizarCompra" />
+      <AppBar titulo="Finalizar Compra" />
       <Main>
-        <div>
-          <SubTitulo></SubTitulo>
+        <div style={{ marginBottom: "25px", marginTop: "25px", }}>
+          <SubTitulo>
+            <span style={{ marginRight: "10px" }}>Total:</span>
+            <span style={{ fontWeight: "normal" }}>{formatadorMonetario(total)}</span>
+          </SubTitulo>
         </div>
         <FormContainer>
           <Formik
@@ -35,6 +41,17 @@ export function FinalizarCompra() {
               return (
                 <FormStylded>
                   <SubTitulo>Metodos de pagamento</SubTitulo>
+                  <p style={{
+                    border: "1px solid black",
+                    padding: "5px",
+                    textAlign: "center",
+                  }}>
+                    <span style={{ 
+                      fontWeight: "bold",
+                      marginRight: "10px"
+                    }}>Metodo escolhido:</span>
+                    <span>{(values.metodo_pagamento) ? values.metodo_pagamento : "----"}</span>
+                  </p>
                   <RadioGroup
                     role="group"
                     aria-labelledby="radio-group-pagamento"
@@ -66,7 +83,7 @@ export function FinalizarCompra() {
                     <Radio
                       name="metodo_pagamento"
                       id="credito_loja"
-                      value="credito_loja"
+                      value="credito"
                       label={"Credito na loja"}
                     />
                     <Radio
