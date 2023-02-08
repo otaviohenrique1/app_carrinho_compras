@@ -16,7 +16,9 @@ export function HomePage() {
           {listaProdutos.map((item, index) => {
             return (
               <Item key={index}>
-                <Imagem src={item.imagem[0]} alt={item.nome} />
+                <ItemImagem>
+                  <Imagem src={item.imagem[0]} alt={item.nome} />
+                </ItemImagem>
                 <ItemDados>
                   <p>{item.nome}</p>
                   <p>{formatadorMonetario(item.preco)}</p>
@@ -29,7 +31,7 @@ export function HomePage() {
                     font_color_hover="#000000"
                     color_active="#003300"
                     font_color_active="#ffffff"
-                  >+ Carrinho</Botao>
+                  >Carrinho</Botao>
                   <Link to={`/produtos/${item.id}`}>
                     <Botao
                       color="#800080"
@@ -61,6 +63,11 @@ const Item = styled.li`
     display: flex;
     flex-direction: column;
   }
+`;
+
+const ItemImagem = styled.div`
+  justify-content: center;
+  align-items: center;
 `;
 
 const ItemDados = styled.div`

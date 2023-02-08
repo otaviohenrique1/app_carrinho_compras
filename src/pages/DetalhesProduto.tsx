@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { ListaProdutosTypes, listaProdutos } from "../utils/listaProdutos";
 import { Main } from "../components/Main";
 import { formatadorMonetario } from "../utils/formatadores";
-import { Imagem } from "../components/Imagem";
 import styled from "styled-components";
+import { Galeria } from "../components/Galeria";
 
 const dadosIniciais: ListaProdutosTypes = {
   id: 0,
@@ -31,30 +31,72 @@ export function DetalhesProduto() {
     <>
       <AppBar titulo="DetalhesProduto" />
       <Main>
-        <ul>
-          <li><b>ID:</b> {data.id}</li>
-          <li><b>Nome:</b> {data.nome}</li>
-          <li><b>Preço:</b> {formatadorMonetario(data.preco)}</li>
-          <li><b>Categoria:</b> {data.categoria}</li>
-          <li><b>Descrição:</b> {data.descricao}</li>
+        <DetalhesLista>
           <li>
-            <Galeria>
-              {data.imagem.map((item, index) => {
-                return (
-                  <Imagem src={item} alt={`Imagem-${index}`} />
-                );
-              })}
-            </Galeria>
+            <span>ID:</span>
+            <span>{data.id}</span>
           </li>
-        </ul>
+          <li>
+            <span>Nome:</span>
+            <span>{data.nome}</span>
+          </li>
+          <li>
+            <span>Preço:</span>
+            <span>{formatadorMonetario(data.preco)}</span>
+          </li>
+          <li>
+            <span>Categoria:</span>
+            <span>{data.categoria}</span>
+          </li>
+          <li>
+            <span>Descrição:</span>
+            <span>{data.descricao}</span>
+          </li>
+          <li>
+            <div>
+              {/* <Galeria2 lista_imagens_url={data.imagem}/> */}
+              <Galeria lista_imagens_url={data.imagem}/>
+              {/* <Galeria>
+                {data.imagem.map((item, index) => {
+                  return (
+                    <Imagem src={item} alt={`Imagem-${index}`} />
+                  );
+                })}
+              </Galeria> */}
+            </div>
+          </li>
+        </DetalhesLista>
       </Main>
     </>
   );
 }
 
-const Galeria = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
+const DetalhesLista = styled.ul`
+  /* li:nth-child(n+1):nth-child(-n+5) {
+    margin-bottom: 10px;
+  } */
+
+  span:first-child {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  span:last-child {
+    text-align: justify;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
 `;
+
+// const Galeria = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   gap: 5px;
+// `;
