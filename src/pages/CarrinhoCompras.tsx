@@ -6,11 +6,9 @@ import { formatadorMonetario } from "../utils/formatadores";
 import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import { ModalAviso } from "../components/Modal";
 
 export function CarrinhoCompras() {
-  const SwalModal = withReactContent(Swal);
   const navigation = useNavigate();
 
   const listaCarrinhoCompras = [
@@ -57,18 +55,9 @@ export function CarrinhoCompras() {
           >Finalizar</BotaoStyled>
           <BotaoStyled
             onClick={() => {
-              SwalModal.fire({
-                icon: "warning",
-                title: <p>Aviso</p>,
-                html: <div>
-                  <p>Deseja cancelar a compra?</p>
-                  <p>A lista de produtos sera esvaziada.</p>
-                </div>,
-                showCancelButton: true,
-                confirmButtonText: 'Sim',
-                cancelButtonText: 'Não',
-                confirmButtonColor: "blue",
-                cancelButtonColor: "red"
+              ModalAviso({
+                titulo: "Aviso",
+                mensagem: "Deseja cancelar a compra?",
               }).then(({ isConfirmed }) => {
                 if (isConfirmed) {
                   navigation("/");

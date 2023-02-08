@@ -6,6 +6,8 @@ import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
 import styled from "styled-components";
 import { formatadorMonetario } from "../utils/formatadores";
+import { ModalAviso } from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -16,6 +18,8 @@ const initialValues: FormTypes = {
 };
 
 export function FinalizarCompra() {
+  const navigation = useNavigate();
+
   function onSubmit(values: FormTypes, formikHelpers: FormikHelpers<FormTypes>) {
     // 
   }
@@ -88,15 +92,35 @@ export function FinalizarCompra() {
                       label={"Transferencia bancaria"}
                     />
                   </RadioGroup>
-                  <Botao
-                    type="submit"
-                    color="#800080"
-                    font_color="#ffffff"
-                    color_hover="#ff33ff"
-                    font_color_hover="#000000"
-                    color_active="#4d004d"
-                    font_color_active="#ffffff"
-                  >Finalizar</Botao>
+                  <ContainerBotao>
+                    <Botao
+                      type="submit"
+                      color="#800080"
+                      font_color="#ffffff"
+                      color_hover="#ff33ff"
+                      font_color_hover="#000000"
+                      color_active="#4d004d"
+                      font_color_active="#ffffff"
+                    >Finalizar</Botao>
+                    <Botao
+                      onClick={() => {
+                        ModalAviso({
+                          titulo: "Aviso",
+                          mensagem: "Deseja cancelar a compra?",
+                        }).then(({ isConfirmed }) => {
+                          if (isConfirmed) {
+                            navigation("/");
+                          }
+                        })
+                      }}
+                      color="#ff0000"
+                      font_color="#ffffff"
+                      color_hover="#ff8080"
+                      font_color_hover="#000000"
+                      color_active="#800000"
+                      font_color_active="#ffffff"
+                    >Cancelar</Botao>
+                  </ContainerBotao>
                 </FormStylded>
               );
             }}
@@ -106,6 +130,12 @@ export function FinalizarCompra() {
     </>
   );
 }
+
+const ContainerBotao = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`;
 
 const MetodoEscolhido = styled.p`
   border: 1px solid black;
