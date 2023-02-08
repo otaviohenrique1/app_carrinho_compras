@@ -32,9 +32,7 @@ export function CarrinhoCompras() {
         </PrecoTotal>
         <ContainerBotoes>
           <BotaoStyled
-            onClick={() => {
-              navigation("/");
-            }}
+            onClick={() => navigation("/")}
             color="#008000"
             font_color="#ffffff"
             color_hover="#00cc00"
@@ -43,9 +41,7 @@ export function CarrinhoCompras() {
             font_color_active="#ffffff"
           >Continuar comprando</BotaoStyled>
           <BotaoStyled
-            onClick={() => {
-              navigation("/finalizar");
-            }}
+            onClick={() => navigation("/finalizar")}
             color="#800080"
             font_color="#ffffff"
             color_hover="#ff33ff"
@@ -60,6 +56,7 @@ export function CarrinhoCompras() {
                 mensagem: "Deseja cancelar a compra?",
               }).then(({ isConfirmed }) => {
                 if (isConfirmed) {
+                  /* Logica que limpa o carrinho de compras */
                   navigation("/");
                 }
               })

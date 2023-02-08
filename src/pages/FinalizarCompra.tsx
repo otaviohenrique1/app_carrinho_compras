@@ -94,6 +94,17 @@ export function FinalizarCompra() {
                   </RadioGroup>
                   <ContainerBotao>
                     <Botao
+                      onClick={() => {
+                        ModalAviso({
+                          titulo: "Aviso",
+                          mensagem: "Deseja cancelar a compra?",
+                        }).then(({ isConfirmed }) => {
+                          if (isConfirmed) {
+                            /* Logica que comfirma e limpa o carrinho de compras */
+                            navigation("/");
+                          }
+                        })
+                      }}
                       type="submit"
                       color="#800080"
                       font_color="#ffffff"
@@ -109,6 +120,7 @@ export function FinalizarCompra() {
                           mensagem: "Deseja cancelar a compra?",
                         }).then(({ isConfirmed }) => {
                           if (isConfirmed) {
+                            /* Logica que limpa o carrinho de compras */
                             navigation("/");
                           }
                         })
