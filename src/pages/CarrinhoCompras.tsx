@@ -84,30 +84,12 @@ export function CarrinhoCompras() {
           >Cancelar</BotaoStyled>
         </ContainerBotoes>
         <div>
-          <ul
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-            }}
-          >
+          <CarrinhoLista>
             {listaCarrinhoCompras.map((item, index) => {
               return (
-                <li
-                  key={index}
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: 10,
-                    backgroundColor: "coral",
-                    alignItems: "center",
-                    padding: 10,
-                    borderRadius: 10
-                  }}
-                >
+                <CarrinhoListaItem key={index}>
                   <ItemImagem>
-                    <Imagem
-                      style={{ width: 150 }}
+                    <ImagemStyled
                       src={item.imagem[0]}
                       alt={item.nome}
                     />
@@ -116,15 +98,35 @@ export function CarrinhoCompras() {
                     <p>{item.nome}</p>
                     <p>{formatadorMonetario(item.preco)}</p>
                   </ItemDados>
-                </li>
+                </CarrinhoListaItem>
               );
             })}
-          </ul>
+          </CarrinhoLista>
         </div>
       </MainStyled>
     </>
   );
 }
+
+const ImagemStyled = styled(Imagem)`
+  width: 150px;
+`;
+
+const CarrinhoLista = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const CarrinhoListaItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background-color: coral;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+`;
 
 const ItemDados = styled.div`
   padding: 15px 10px;

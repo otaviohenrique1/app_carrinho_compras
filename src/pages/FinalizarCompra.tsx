@@ -26,32 +26,27 @@ export function FinalizarCompra() {
     <>
       <AppBar titulo="Finalizar Compra" />
       <Main>
-        <div style={{ marginBottom: "25px", marginTop: "25px", }}>
-          <SubTitulo>
-            <span style={{ marginRight: "10px" }}>Total:</span>
-            <span style={{ fontWeight: "normal" }}>{formatadorMonetario(total)}</span>
-          </SubTitulo>
-        </div>
+        <ValorTotalContainer>
+          <SubTituloStyled>
+            <span>Total:</span>
+            <span>{formatadorMonetario(total)}</span>
+          </SubTituloStyled>
+        </ValorTotalContainer>
         <FormContainer>
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
           >
             {({ values }) => {
+              const metodoEscolhido = (values.metodo_pagamento) ? values.metodo_pagamento : "----";
+
               return (
                 <FormStylded>
                   <SubTitulo>Metodos de pagamento</SubTitulo>
-                  <p style={{
-                    border: "1px solid black",
-                    padding: "5px",
-                    textAlign: "center",
-                  }}>
-                    <span style={{ 
-                      fontWeight: "bold",
-                      marginRight: "10px"
-                    }}>Metodo escolhido:</span>
-                    <span>{(values.metodo_pagamento) ? values.metodo_pagamento : "----"}</span>
-                  </p>
+                  <MetodoEscolhido>
+                    <span>Metodo escolhido:</span>
+                    <span>{metodoEscolhido}</span>
+                  </MetodoEscolhido>
                   <RadioGroup
                     role="group"
                     aria-labelledby="radio-group-pagamento"
@@ -112,9 +107,41 @@ export function FinalizarCompra() {
   );
 }
 
+const MetodoEscolhido = styled.p`
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+
+  span:first-child {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+`;
+
+const SubTitulo = styled.h2`
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+`;
+
+const SubTituloStyled = styled(SubTitulo)`
+  span:first-child {
+    margin-right: 10px;
+  }
+
+  span:last-child {
+    font-weight: normal;
+  }
+`;
+
+const ValorTotalContainer = styled.div`
+  margin-bottom: 25px;
+  margin-top: 25px;
+`;
+
 const FormContainer = styled.div`
   display: flex;
-    justify-content: center;
+  justify-content: center;
 `;
 
 const FormStylded = styled(Form)`
@@ -129,10 +156,4 @@ const RadioGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-`;
-
-const SubTitulo = styled.h2`
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
 `;
