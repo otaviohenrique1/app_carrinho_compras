@@ -97,8 +97,12 @@ export function CarrinhoCompras() {
                       onClick={() => {
                         ModalQuantidade({
                           titulo: "Quantidade",
-                          mensagem: "Quanto você que adicionar?",
-                        })
+                          mensagem: "Quanto o valor que você quer adicionar?",
+                        }).then(({ isConfirmed }) => {
+                          if (isConfirmed) {
+                            /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
+                          }
+                        });
                       }}
                       color="#800080"
                       font_color="#ffffff"
@@ -111,8 +115,12 @@ export function CarrinhoCompras() {
                       onClick={() => {
                         ModalQuantidade({
                           titulo: "Quantidade",
-                          mensagem: "Quanto você que adicionar?",
-                        })
+                          mensagem: "Quanto o valor que você quer remover?",
+                        }).then(({ isConfirmed }) => {
+                          if (isConfirmed) {
+                            /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
+                          }
+                        });
                       }}
                       color="#ffa500"
                       font_color="#ffffff"
@@ -130,7 +138,7 @@ export function CarrinhoCompras() {
                           if (isConfirmed) {
                             /* Logica que remove o produto do carrinho de compras */
                           }
-                        })
+                        });
                       }}
                       color="#ff0000"
                       font_color="#ffffff"
