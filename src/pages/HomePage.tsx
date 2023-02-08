@@ -5,7 +5,7 @@ import { formatadorMonetario } from "../utils/formatadores";
 import { Botao } from "../components/Botao";
 import { Link } from "react-router-dom";
 import { Main } from "../components/Main";
-import { Imagem } from "../components/Imagem";
+import { Imagem, ItemImagem } from "../components/Imagem";
 
 export function HomePage() {
   return (
@@ -63,11 +63,6 @@ const Item = styled.li`
     display: flex;
     flex-direction: column;
   }
-`;
-
-const ItemImagem = styled.div`
-  justify-content: center;
-  align-items: center;
 `;
 
 const ItemDados = styled.div`
