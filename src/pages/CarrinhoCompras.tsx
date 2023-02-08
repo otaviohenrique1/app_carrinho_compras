@@ -101,14 +101,14 @@ export function CarrinhoCompras() {
                       color_active="#003300"
                       font_color_active="#ffffff"
                     >Adicionar</Botao>
-                    <BotaoStyled
+                    <Botao
                       color="#800080"
                       font_color="#ffffff"
                       color_hover="#ff33ff"
                       font_color_hover="#000000"
                       color_active="#4d004d"
                       font_color_active="#ffffff"
-                    >Remover</BotaoStyled>
+                    >Remover</Botao>
                     <Botao
                       color="#ff0000"
                       font_color="#ffffff"
