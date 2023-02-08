@@ -4,6 +4,7 @@ import { Main } from "../components/Main";
 import { Formik, Form } from "formik";
 import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
+import styled from "styled-components";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -23,28 +24,20 @@ export function FinalizarCompra() {
       <AppBar titulo="FinalizarCompra" />
       <Main>
         <div>
+          <SubTitulo></SubTitulo>
+        </div>
+        <FormContainer>
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
           >
             {({ values }) => {
               return (
-                <Form
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "30px"
-                  }}
-                >
-                  <h1>Metodos de pagamento</h1>
-                  <div
+                <FormStylded>
+                  <SubTitulo>Metodos de pagamento</SubTitulo>
+                  <RadioGroup
                     role="group"
                     aria-labelledby="radio-group-pagamento"
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "repeat(2, 1fr)",
-                      gap: "20px"
-                    }}
                   >
                     <Radio
                       name="metodo_pagamento"
@@ -82,7 +75,7 @@ export function FinalizarCompra() {
                       value="transferencia"
                       label={"Transferencia bancaria"}
                     />
-                  </div>
+                  </RadioGroup>
                   <Botao
                     type="submit"
                     color="#800080"
@@ -92,12 +85,37 @@ export function FinalizarCompra() {
                     color_active="#4d004d"
                     font_color_active="#ffffff"
                   >Finalizar</Botao>
-                </Form>
+                </FormStylded>
               );
             }}
           </Formik>
-        </div>
+        </FormContainer>
       </Main>
     </>
   );
 }
+
+const FormContainer = styled.div`
+  display: flex;
+    justify-content: center;
+`;
+
+const FormStylded = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 600px;
+`;
+
+const RadioGroup = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+`;
+
+const SubTitulo = styled.h2`
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+`;
