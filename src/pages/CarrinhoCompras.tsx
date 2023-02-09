@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export function CarrinhoCompras() {
   const navigation = useNavigate();
 
-  const { state, setState, valorTotal, limparLista } = useContext(CompraContext);
+  const { state, valorTotal, limparLista, removerProduto, adicionarQuantidade, removerQuantidade } = useContext(CompraContext);
 
   const [lista, setLista] = useState<CarrinhoProdutoTypes[]>([]);
 
@@ -80,18 +80,21 @@ export function CarrinhoCompras() {
                       alt={item.nome}
                     />
                   </ItemImagem>
-                  <ItemDados>
+                  <ItemDadosContainer>
                     <p>{item.nome}</p>
-                    <p>{formatadorMonetario(item.preco)}</p>
-                    <p>{formatadorMonetario(item.precoQuantidade)}</p>
-                    <p>
-                      <span style={{
-                        fontWeight: "bold",
-                        marginRight: "5px",
-                      }}>Quantidade:</span>
+                    <ItemDados>
+                      <span>Preço unidade:</span>
+                      <span>{formatadorMonetario(item.preco)}</span>
+                    </ItemDados>
+                    <ItemDados>
+                      <span>Quantidade:</span>
                       <span>{item.quantidade}</span>
-                    </p>
-                  </ItemDados>
+                    </ItemDados>
+                    <ItemDados>
+                      <span>Preco X Quantidade:</span>
+                      <span>{formatadorMonetario(item.precoQuantidade)}</span>  
+                    </ItemDados>
+                  </ItemDadosContainer>
                   <ItemBotoes>
                     <Botao
                       onClick={() => {
@@ -106,15 +109,7 @@ export function CarrinhoCompras() {
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
-
-                            let itemAtualizado = state.map((itemBusca) => {
-                              if (itemBusca.id === item.id) {
-                                itemBusca.quantidade = itemBusca.quantidade + novaQuantidade;
-                                itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
-                              }
-                              return itemBusca;
-                            });
-                            setState(itemAtualizado);
+                            adicionarQuantidade(item.id, novaQuantidade);
                           }
                         });
                       }}
@@ -135,7 +130,7 @@ export function CarrinhoCompras() {
                               Swal.showValidationMessage("Campo vazio");
                             }
                             
-                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+                            let novaQuantidade = parseInt(value);
                             let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
                             let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
                             if (novaQuantidade > validaBuscaItem.quantidade) {
@@ -146,18 +141,10 @@ export function CarrinhoCompras() {
                           if (isConfirmed) {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
 
-                            let itemAtualizado = state.map((itemBusca) => {
-                              if (itemBusca.id === item.id) {
-                                itemBusca.quantidade = itemBusca.quantidade - novaQuantidade;
-                                itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
-                              }
-                              return itemBusca;
-                            });
-                            setState(itemAtualizado);
-
+                            removerQuantidade(item.id, novaQuantidade);
+                            
                             if (item.quantidade === 0) {
-                              let listaAtualizada = state.filter((itemBusca) => itemBusca.id !== item.id);
-                              setState(listaAtualizada);
+                              removerProduto(item.id);
                             }
                           }
                         });
@@ -176,8 +163,7 @@ export function CarrinhoCompras() {
                           mensagem: "Deseja remover o produto?",
                         }).then(({ isConfirmed }) => {
                           if (isConfirmed) {
-                            let listaAtualizada = state.filter((itemBusca) => itemBusca.id !== item.id);
-                            setState(listaAtualizada);
+                            removerProduto(item.id);
                           }
                         });
                       }}
@@ -218,15 +204,24 @@ const CarrinhoListaItem = styled.div`
   border-radius: 10px;
 `;
 
-const ItemDados = styled.div`
+const ItemDadosContainer = styled.div`
   padding: 15px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
 
-  p {
-    font-size: 20px;
+  p:first-child {
+    font-size: 22px;
+  }
+`;
+
+const ItemDados = styled.p`
+  font-size: 18px;
+
+  span:first-child {
+    font-weight: bold;
+    margin-right: 5px;
   }
 `;
 
