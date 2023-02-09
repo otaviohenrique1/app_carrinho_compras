@@ -1,9 +1,12 @@
 import React from 'react';
-import { AppRoutes } from './routes';
+import { AppRoutes } from './pages/routes';
+import { GlobalContext } from './context';
 
 function App() {
   return (
-    <AppRoutes />
+    <GlobalContext>
+      <AppRoutes />
+    </GlobalContext>
   );
 }
 

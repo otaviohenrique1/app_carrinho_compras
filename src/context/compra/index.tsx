@@ -1,8 +1,9 @@
 import { Dispatch, FC, SetStateAction, createContext, ReactNode, useState } from "react";
-import { ListaProdutosTypes } from "../utils/listaProdutos"
+import { ListaProdutosTypes } from "../../utils/listaProdutos"
 
 export type CarrinhoProdutoTypes = ListaProdutosTypes & { 
   quantidade: number;
+  precoQuantidade: number;
 }
 
 export type CompraType =  {
