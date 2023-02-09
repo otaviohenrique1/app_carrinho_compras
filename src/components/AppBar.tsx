@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Botao } from "./Botao";
 
@@ -8,23 +8,27 @@ interface AppBarProps {
 
 export function AppBar(props: AppBarProps) {
   const { titulo } = props;
+  const navigation = useNavigate();
 
   return (
     <AppBarNav>
       <AppBarH1>{titulo}</AppBarH1>
-      <Link to="/carrinho">
-        <Botao
-          color="#0000cc"
-          font_color="#ffffff"
-          color_hover="#add8e6"
-          font_color_hover="#000000"
-          color_active="#00008b"
-          font_color_active="#ffffff"
-        >Carrinho</Botao>
-      </Link>
+      <BotaoStyled
+        onClick={() => navigation("/carrinho")}
+        color="#0000cc"
+        font_color="#ffffff"
+        color_hover="#add8e6"
+        font_color_hover="#000000"
+        color_active="#00008b"
+        font_color_active="#ffffff"
+      >Carrinho</BotaoStyled>
     </AppBarNav>
   );
 }
+
+const BotaoStyled = styled(Botao)`
+  max-width: 100px;
+`;
 
 const AppBarNav = styled.nav`
   padding: 15px 20px;

@@ -1,17 +1,20 @@
+import { useState, useContext } from "react";
+import styled from "styled-components";
 import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
 import { Botao } from "../components/Botao";
-import styled from "styled-components";
 import { formatadorMonetario } from "../utils/formatadores";
 import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { ItemBotoes } from "../components/ItemBotoes";
-import { useState } from "react";
+import { CompraContext } from "../context/compra";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
+  
+  const { /* state, setState, */ valorTotal } = useContext(CompraContext);
 
   const [numeroQuantidade, setNumeroQuantidade] = useState(10)
 
@@ -30,9 +33,10 @@ export function CarrinhoCompras() {
       <MainStyled>
         <PrecoTotal>
           <span>Total:</span>
-          <span>{formatadorMonetario(listaCarrinhoCompras.reduce((accumulator, currentValue) => {
+          {/* <span>{formatadorMonetario(listaCarrinhoCompras.reduce((accumulator, currentValue) => {
             return accumulator + currentValue.preco;
-          }, 0))}</span>
+          }, 0))}</span> */}
+          <span>{formatadorMonetario(valorTotal)}</span>
         </PrecoTotal>
         <ContainerBotoes>
           <BotaoStyled

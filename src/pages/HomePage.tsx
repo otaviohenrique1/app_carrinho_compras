@@ -1,14 +1,24 @@
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { AppBar } from "../components/AppBar";
 import { listaProdutos } from "../utils/listaProdutos";
 import { formatadorMonetario } from "../utils/formatadores";
 import { Botao } from "../components/Botao";
-import { Link } from "react-router-dom";
 import { Main } from "../components/Main";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { ItemBotoes } from "../components/ItemBotoes";
+import { CompraContext } from "../context/compra";
 
 export function HomePage() {
+  const { state, setState } = useContext(CompraContext);
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    console.log(state);
+  }, [state])
+  
+  
   return (
     <>
       <AppBar titulo="HomePage" />
@@ -26,6 +36,18 @@ export function HomePage() {
                 </ItemDados>
                 <ItemBotoes>
                   <Botao
+                  onClick={() => {
+                    setState([...state, {
+                      id: item.id,
+                      nome: item.nome,
+                      imagem: item.imagem,
+                      categoria: item.categoria,
+                      descricao: item.descricao,
+                      preco: item.preco,
+                      quantidade: 1,
+                      precoQuantidade: item.preco * 1,
+                    }]);
+                  }}
                     color="#008000"
                     font_color="#ffffff"
                     color_hover="#00cc00"
@@ -33,16 +55,15 @@ export function HomePage() {
                     color_active="#003300"
                     font_color_active="#ffffff"
                   >Carrinho</Botao>
-                  <Link to={`/produtos/${item.id}`}>
-                    <Botao
-                      color="#800080"
-                      font_color="#ffffff"
-                      color_hover="#ff33ff"
-                      font_color_hover="#000000"
-                      color_active="#4d004d"
-                      font_color_active="#ffffff"
-                    >Detalhes</Botao>
-                  </Link>
+                  <Botao
+                    onClick={() => navigation(`/produtos/${item.id}`)}
+                    color="#800080"
+                    font_color="#ffffff"
+                    color_hover="#ff33ff"
+                    font_color_hover="#000000"
+                    color_active="#4d004d"
+                    font_color_active="#ffffff"
+                  >Detalhes</Botao>
                 </ItemBotoes>
               </Item>
             );

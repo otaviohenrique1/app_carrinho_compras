@@ -6,22 +6,18 @@ export type CarrinhoProdutoTypes = ListaProdutosTypes & {
   precoQuantidade: number;
 }
 
-export type CompraType =  {
-  carrinho_compras: CarrinhoProdutoTypes[];
-  preco_total: number;
-}
+export type CompraType = CarrinhoProdutoTypes[];
 
 export type PropsCompraContext = { 
   state: CompraType;
   setState: Dispatch<SetStateAction<CompraType>>;
+  valorTotal: number;
 }
 
 export const ValoresIniciais: PropsCompraContext = {
-  state: {
-    carrinho_compras: [],
-    preco_total: 0
-  },
-  setState: () => {},
+  state: [],
+  setState: () => { },
+  valorTotal: 0
 };
 
 export const CompraContext = createContext<PropsCompraContext>(ValoresIniciais);
@@ -38,6 +34,7 @@ export const CompraContextProvider: FC<CompraContextProviderProps> = (props: Com
       value={{
         state,
         setState,
+        valorTotal: state.reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual.preco, 0)
       }}
     >
       {props.children}
