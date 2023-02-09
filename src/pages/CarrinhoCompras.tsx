@@ -8,9 +8,12 @@ import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { ItemBotoes } from "../components/ItemBotoes";
+import { useState } from "react";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
+
+  const [numeroQuantidade, setNumeroQuantidade] = useState(10)
 
   const listaCarrinhoCompras = [
     listaProdutos[0],
@@ -89,7 +92,7 @@ export function CarrinhoCompras() {
                         fontWeight: "bold",
                         marginRight: "5px",
                       }}>Quantidade:</span>
-                      <span>{10}</span>
+                      <span>{numeroQuantidade}</span>
                     </p>
                   </ItemDados>
                   <ItemBotoes>
@@ -98,8 +101,11 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer adicionar?",
-                        }).then(({ isConfirmed }) => {
+                        }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
+                            let valor = parseInt(value);
+                            let validaValor = (isNaN(valor)) ? 1 : valor;
+                            setNumeroQuantidade(validaValor);
                             /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
                           }
                         });
@@ -116,8 +122,11 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer remover?",
-                        }).then(({ isConfirmed }) => {
+                        }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
+                            let valor = parseInt(value);
+                            let validaValor = (isNaN(valor)) ? 1 : valor;
+                            setNumeroQuantidade(validaValor);
                             /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
                           }
                         });
