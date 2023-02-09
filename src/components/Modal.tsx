@@ -1,7 +1,5 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { CompraContext, valoresIniciaisUmProduto } from "../context/compra";
-import { useContext } from "react";
 
 export interface ModalAvisoProps {
   titulo: string;
@@ -25,13 +23,12 @@ export function ModalAviso(props: ModalAvisoProps) {
 }
 
 export interface ModalQuantidadeProps extends ModalAvisoProps {
-  id: number;
+  preConfirm: (inputValue: any) => void;
 }
 
 export function ModalQuantidade(props: ModalQuantidadeProps) {
   const SwalModal = withReactContent(Swal);
-  const { titulo, mensagem } = props;
-  const { state } = useContext(CompraContext);
+  const { titulo, mensagem, preConfirm } = props;
 
   return SwalModal.fire({
     icon: "question",
@@ -41,18 +38,7 @@ export function ModalQuantidade(props: ModalQuantidadeProps) {
     inputAttributes: {
       min: "1",
     },
-    preConfirm: (value: number) => {
-      if (!value) {
-        Swal.showValidationMessage("Campo vazio");
-      }
-      
-      let buscaItem = state.find((itemBusca) => itemBusca.quantidade === props.id);
-      let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
-      
-      if (value > validaBuscaItem.quantidade) {
-        Swal.showValidationMessage("Valor invalido");
-      }
-    },
+    preConfirm: preConfirm,
     showCancelButton: true,
     confirmButtonText: 'Salvar',
     confirmButtonColor: "blue",

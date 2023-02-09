@@ -4,12 +4,12 @@ import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
 import { Botao } from "../components/Botao";
 import { formatadorMonetario } from "../utils/formatadores";
-// import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { ItemBotoes } from "../components/ItemBotoes";
-import { CarrinhoProdutoTypes, CompraContext } from "../context/compra";
+import { CarrinhoProdutoTypes, CompraContext, valoresIniciaisUmProduto } from "../context/compra";
+import Swal from 'sweetalert2';
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
@@ -56,7 +56,6 @@ export function CarrinhoCompras() {
                 mensagem: "Deseja cancelar a compra?",
               }).then(({ isConfirmed }) => {
                 if (isConfirmed) {
-                  /* Logica que limpa o carrinho de compras */
                   limparLista();
                   navigation("/");
                 }
@@ -99,11 +98,14 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer adicionar?",
-                          id: item.id,
+                          preConfirm: (value: number) => {
+                            if (!value) {
+                              Swal.showValidationMessage("Campo vazio");
+                            }
+                          },
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
-                            // let validaValorQuantidade = (isNaN(novaQuantidade)) ? 1 : novaQuantidade;
 
                             let itemAtualizado = state.map((itemBusca) => {
                               if (itemBusca.id === item.id) {
@@ -128,11 +130,23 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer remover?",
-                          id: item.id,
+                          preConfirm: (value) => {                            
+                            if (!value) {
+                              Swal.showValidationMessage("Campo vazio");
+                            }
+                            
+                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+                            let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
+                            let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
+                            
+                            if (novaQuantidade > validaBuscaItem.quantidade) {
+                              Swal.showValidationMessage("Valor invalido");
+                            }
+                          },
                         }).then(({ isConfirmed, value }) => {
+                          
                           if (isConfirmed) {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
-                            // let validaValorQuantidade = (isNaN(novaQuantidade)) ? 1 : novaQuantidade;
 
                             let itemAtualizado = state.map((itemBusca) => {
                               if (itemBusca.id === item.id) {
@@ -159,7 +173,8 @@ export function CarrinhoCompras() {
                           mensagem: "Deseja remover o produto?",
                         }).then(({ isConfirmed }) => {
                           if (isConfirmed) {
-                            /* Logica que remove o produto do carrinho de compras */
+                            let listaAtualizada = state.filter((itemBusca) => itemBusca.id !== item.id);
+                            setState(listaAtualizada);
                           }
                         });
                       }}
