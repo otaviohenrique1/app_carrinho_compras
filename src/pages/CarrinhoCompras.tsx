@@ -138,13 +138,11 @@ export function CarrinhoCompras() {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
                             let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
                             let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
-                            
                             if (novaQuantidade > validaBuscaItem.quantidade) {
                               Swal.showValidationMessage("Valor invalido");
                             }
                           },
                         }).then(({ isConfirmed, value }) => {
-                          
                           if (isConfirmed) {
                             let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
 
@@ -156,6 +154,11 @@ export function CarrinhoCompras() {
                               return itemBusca;
                             });
                             setState(itemAtualizado);
+
+                            if (item.quantidade === 0) {
+                              let listaAtualizada = state.filter((itemBusca) => itemBusca.id !== item.id);
+                              setState(listaAtualizada);
+                            }
                           }
                         });
                       }}
