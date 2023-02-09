@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
@@ -9,23 +9,29 @@ import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { ItemBotoes } from "../components/ItemBotoes";
-import { CompraContext } from "../context/compra";
+import { CarrinhoProdutoTypes, CompraContext } from "../context/compra";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
   
-  const { /* state, setState, */ valorTotal } = useContext(CompraContext);
+  const { state, /* setState, */ valorTotal } = useContext(CompraContext);
 
-  const [numeroQuantidade, setNumeroQuantidade] = useState(10)
+  const [numeroQuantidade, setNumeroQuantidade] = useState(10);
+  const [lista, setLista] = useState<CarrinhoProdutoTypes[]>([]);
 
-  const listaCarrinhoCompras = [
-    listaProdutos[0],
-    listaProdutos[1],
-    listaProdutos[2],
-    listaProdutos[3],
-    listaProdutos[4],
-    listaProdutos[5],
-  ];
+  // const listaCarrinhoCompras = [
+  //   listaProdutos[0],
+  //   listaProdutos[1],
+  //   listaProdutos[2],
+  //   listaProdutos[3],
+  //   listaProdutos[4],
+  //   listaProdutos[5],
+  // ];
+  
+  useEffect(() => {
+    setLista(state);
+  }, [state]);
+  
 
   return (
     <>
@@ -79,7 +85,7 @@ export function CarrinhoCompras() {
         </ContainerBotoes>
         <div>
           <CarrinhoLista>
-            {listaCarrinhoCompras.map((item, index) => {
+            {lista.map((item, index) => {
               return (
                 <CarrinhoListaItem key={index}>
                   <ItemImagem>
@@ -91,12 +97,13 @@ export function CarrinhoCompras() {
                   <ItemDados>
                     <p>{item.nome}</p>
                     <p>{formatadorMonetario(item.preco)}</p>
+                    <p>{formatadorMonetario(item.precoQuantidade)}</p>
                     <p>
                       <span style={{
                         fontWeight: "bold",
                         marginRight: "5px",
                       }}>Quantidade:</span>
-                      <span>{numeroQuantidade}</span>
+                      <span>{item.quantidade}</span>
                     </p>
                   </ItemDados>
                   <ItemBotoes>

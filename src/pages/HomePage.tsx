@@ -37,16 +37,30 @@ export function HomePage() {
                 <ItemBotoes>
                   <Botao
                   onClick={() => {
-                    setState([...state, {
-                      id: item.id,
-                      nome: item.nome,
-                      imagem: item.imagem,
-                      categoria: item.categoria,
-                      descricao: item.descricao,
-                      preco: item.preco,
-                      quantidade: 1,
-                      precoQuantidade: item.preco * 1,
-                    }]);
+                    let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
+
+                    if (!buscaItem) {
+                      setState([...state, {
+                        id: item.id,
+                        nome: item.nome,
+                        imagem: item.imagem,
+                        categoria: item.categoria,
+                        descricao: item.descricao,
+                        preco: item.preco,
+                        quantidade: 1,
+                        precoQuantidade: item.preco * 1,
+                      }]);
+                    } else {
+                      let itemAtualizado = state.map((itemBusca) => {
+
+                        if (itemBusca.id === item.id) {
+                          itemBusca.quantidade = itemBusca.quantidade + 1;
+                          itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
+                        }
+                        return itemBusca;
+                      });
+                      setState(itemAtualizado);
+                    }
                   }}
                     color="#008000"
                     font_color="#ffffff"
