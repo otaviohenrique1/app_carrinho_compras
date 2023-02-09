@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { AppBar } from "../components/AppBar";
 import { listaProdutos } from "../utils/listaProdutos";
 import { formatadorMonetario } from "../utils/formatadores";
-import { Botao } from "../components/Botao";
+import { Botao, ItemBotoes } from "../components/Botao";
 import { Main } from "../components/Main";
 import { Imagem, ItemImagem } from "../components/Imagem";
-import { ItemBotoes } from "../components/ItemBotoes";
 import { CompraContext } from "../context/compra";
 
 export function HomePage() {

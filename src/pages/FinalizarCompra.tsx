@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { formatadorMonetario } from "../utils/formatadores";
 import { ModalAviso } from "../components/Modal";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CompraContext } from "../context/compra";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -18,13 +20,13 @@ const initialValues: FormTypes = {
 };
 
 export function FinalizarCompra() {
+  const { valorTotal, limparLista } = useContext(CompraContext);
+
   const navigation = useNavigate();
 
   function onSubmit(values: FormTypes, formikHelpers: FormikHelpers<FormTypes>) {
     // 
   }
-
-  const total = 100;
 
   return (
     <>
@@ -33,7 +35,7 @@ export function FinalizarCompra() {
         <ValorTotalContainer>
           <SubTituloStyled>
             <span>Total:</span>
-            <span>{formatadorMonetario(total)}</span>
+            <span>{formatadorMonetario(valorTotal)}</span>
           </SubTituloStyled>
         </ValorTotalContainer>
         <FormContainer>
@@ -100,7 +102,7 @@ export function FinalizarCompra() {
                           mensagem: "Deseja cancelar a compra?",
                         }).then(({ isConfirmed }) => {
                           if (isConfirmed) {
-                            /* Logica que comfirma e limpa o carrinho de compras */
+                            limparLista();
                             navigation("/");
                           }
                         })

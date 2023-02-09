@@ -30,3 +30,11 @@ export const Botao = styled.button<BotaoStyleProps>`
     color: ${(props) => props.font_color_active};
   }
 `;
+
+export const ItemBotoes = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10px;
+  gap: 5px
+`;

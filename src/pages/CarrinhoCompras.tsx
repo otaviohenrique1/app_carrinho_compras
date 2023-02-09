@@ -2,12 +2,11 @@ import { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
-import { Botao } from "../components/Botao";
+import { Botao, ItemBotoes } from "../components/Botao";
 import { formatadorMonetario } from "../utils/formatadores";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
-import { ItemBotoes } from "../components/ItemBotoes";
 import { CarrinhoProdutoTypes, CompraContext, valoresIniciaisUmProduto } from "../context/compra";
 import Swal from 'sweetalert2';
 
@@ -86,7 +85,10 @@ export function CarrinhoCompras() {
                         />
                       </ItemImagem>
                       <ItemDadosContainer>
-                        <p>{item.nome}</p>
+                        <ItemDados>
+                          <span>Nome:</span>
+                          <span>{item.nome}</span>
+                        </ItemDados>
                         <ItemDados>
                           <span>Preço unidade:</span>
                           <span>{formatadorMonetario(item.preco)}</span>
@@ -230,10 +232,6 @@ const ItemDadosContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-
-  p:first-child {
-    font-size: 22px;
-  }
 `;
 
 const ItemDados = styled.p`
