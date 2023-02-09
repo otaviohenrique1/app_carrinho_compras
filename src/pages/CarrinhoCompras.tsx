@@ -71,119 +71,139 @@ export function CarrinhoCompras() {
         </ContainerBotoes>
         <div>
           <CarrinhoLista>
-            {lista.map((item, index) => {
-              return (
-                <CarrinhoListaItem key={index}>
-                  <ItemImagem>
-                    <ImagemStyled
-                      src={item.imagem[0]}
-                      alt={item.nome}
-                    />
-                  </ItemImagem>
-                  <ItemDadosContainer>
-                    <p>{item.nome}</p>
-                    <ItemDados>
-                      <span>Preço unidade:</span>
-                      <span>{formatadorMonetario(item.preco)}</span>
-                    </ItemDados>
-                    <ItemDados>
-                      <span>Quantidade:</span>
-                      <span>{item.quantidade}</span>
-                    </ItemDados>
-                    <ItemDados>
-                      <span>Preco X Quantidade:</span>
-                      <span>{formatadorMonetario(item.precoQuantidade)}</span>  
-                    </ItemDados>
-                  </ItemDadosContainer>
-                  <ItemBotoes>
-                    <Botao
-                      onClick={() => {
-                        ModalQuantidade({
-                          titulo: "Quantidade",
-                          mensagem: "Quanto o valor que você quer adicionar?",
-                          preConfirm: (value: number) => {
-                            if (!value) {
-                              Swal.showValidationMessage("Campo vazio");
-                            }
-                          },
-                        }).then(({ isConfirmed, value }) => {
-                          if (isConfirmed) {
-                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
-                            adicionarQuantidade(item.id, novaQuantidade);
-                          }
-                        });
-                      }}
-                      color="#800080"
-                      font_color="#ffffff"
-                      color_hover="#ff33ff"
-                      font_color_hover="#000000"
-                      color_active="#4d004d"
-                      font_color_active="#ffffff"
-                    >Adicionar</Botao>
-                    <Botao
-                      onClick={() => {
-                        ModalQuantidade({
-                          titulo: "Quantidade",
-                          mensagem: "Quanto o valor que você quer remover?",
-                          preConfirm: (value) => {                            
-                            if (!value) {
-                              Swal.showValidationMessage("Campo vazio");
-                            }
-                            
-                            let novaQuantidade = parseInt(value);
-                            let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
-                            let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
-                            if (novaQuantidade > validaBuscaItem.quantidade) {
-                              Swal.showValidationMessage("Valor invalido");
-                            }
-                          },
-                        }).then(({ isConfirmed, value }) => {
-                          if (isConfirmed) {
-                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+            {
+              (lista.length === 0)
+                ? <ListaVazia>
+                  <p>Lista vazia</p>
+                </ListaVazia>
+                : lista.map((item, index) => {
+                  return (
+                    <CarrinhoListaItem key={index}>
+                      <ItemImagem>
+                        <ImagemStyled
+                          src={item.imagem[0]}
+                          alt={item.nome}
+                        />
+                      </ItemImagem>
+                      <ItemDadosContainer>
+                        <p>{item.nome}</p>
+                        <ItemDados>
+                          <span>Preço unidade:</span>
+                          <span>{formatadorMonetario(item.preco)}</span>
+                        </ItemDados>
+                        <ItemDados>
+                          <span>Quantidade:</span>
+                          <span>{item.quantidade}</span>
+                        </ItemDados>
+                        <ItemDados>
+                          <span>Preco X Quantidade:</span>
+                          <span>{formatadorMonetario(item.precoQuantidade)}</span>
+                        </ItemDados>
+                      </ItemDadosContainer>
+                      <ItemBotoes>
+                        <Botao
+                          onClick={() => {
+                            ModalQuantidade({
+                              titulo: "Quantidade",
+                              mensagem: "Quanto o valor que você quer adicionar?",
+                              preConfirm: (value: number) => {
+                                if (!value) {
+                                  Swal.showValidationMessage("Campo vazio");
+                                }
+                              },
+                            }).then(({ isConfirmed, value }) => {
+                              if (isConfirmed) {
+                                let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+                                adicionarQuantidade(item.id, novaQuantidade);
+                              }
+                            });
+                          }}
+                          color="#800080"
+                          font_color="#ffffff"
+                          color_hover="#ff33ff"
+                          font_color_hover="#000000"
+                          color_active="#4d004d"
+                          font_color_active="#ffffff"
+                        >Adicionar</Botao>
+                        <Botao
+                          onClick={() => {
+                            ModalQuantidade({
+                              titulo: "Quantidade",
+                              mensagem: "Quanto o valor que você quer remover?",
+                              preConfirm: (value) => {
+                                if (!value) {
+                                  Swal.showValidationMessage("Campo vazio");
+                                }
 
-                            removerQuantidade(item.id, novaQuantidade);
-                            
-                            if (item.quantidade === 0) {
-                              removerProduto(item.id);
-                            }
-                          }
-                        });
-                      }}
-                      color="#ffa500"
-                      font_color="#ffffff"
-                      color_hover="#ffd280"
-                      font_color_hover="#000000"
-                      color_active="#805300"
-                      font_color_active="#ffffff"
-                    >Remover</Botao>
-                    <Botao
-                      onClick={() => {
-                        ModalAviso({
-                          titulo: "Aviso",
-                          mensagem: "Deseja remover o produto?",
-                        }).then(({ isConfirmed }) => {
-                          if (isConfirmed) {
-                            removerProduto(item.id);
-                          }
-                        });
-                      }}
-                      color="#ff0000"
-                      font_color="#ffffff"
-                      color_hover="#ff8080"
-                      font_color_hover="#000000"
-                      color_active="#800000"
-                      font_color_active="#ffffff"
-                    >Excluir</Botao>
-                  </ItemBotoes>
-                </CarrinhoListaItem>
-              );
-            })}
+                                let novaQuantidade = parseInt(value);
+                                let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
+                                let validaBuscaItem = (typeof buscaItem === "undefined") ? valoresIniciaisUmProduto : buscaItem;
+                                if (novaQuantidade > validaBuscaItem.quantidade) {
+                                  Swal.showValidationMessage("Valor invalido");
+                                }
+                              },
+                            }).then(({ isConfirmed, value }) => {
+                              if (isConfirmed) {
+                                let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+
+                                removerQuantidade(item.id, novaQuantidade);
+
+                                if (item.quantidade === 0) {
+                                  removerProduto(item.id);
+                                }
+                              }
+                            });
+                          }}
+                          color="#ffa500"
+                          font_color="#ffffff"
+                          color_hover="#ffd280"
+                          font_color_hover="#000000"
+                          color_active="#805300"
+                          font_color_active="#ffffff"
+                        >Remover</Botao>
+                        <Botao
+                          onClick={() => {
+                            ModalAviso({
+                              titulo: "Aviso",
+                              mensagem: "Deseja remover o produto?",
+                            }).then(({ isConfirmed }) => {
+                              if (isConfirmed) {
+                                removerProduto(item.id);
+                              }
+                            });
+                          }}
+                          color="#ff0000"
+                          font_color="#ffffff"
+                          color_hover="#ff8080"
+                          font_color_hover="#000000"
+                          color_active="#800000"
+                          font_color_active="#ffffff"
+                        >Excluir</Botao>
+                      </ItemBotoes>
+                    </CarrinhoListaItem>
+                  );
+                })}
           </CarrinhoLista>
         </div>
       </MainStyled>
     </>
   );
 }
+
+const ListaVazia = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: coral;
+  padding: 10px;
+  border-radius: 10px;
+  height: 100px;
+  
+  p {
+    font-size: 30px;
+  }
+`;
 
 const ImagemStyled = styled(Imagem)`
   width: 150px;
