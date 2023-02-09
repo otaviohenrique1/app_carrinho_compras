@@ -14,24 +14,13 @@ import { CarrinhoProdutoTypes, CompraContext } from "../context/compra";
 export function CarrinhoCompras() {
   const navigation = useNavigate();
 
-  const { state, /* setState, */ valorTotal } = useContext(CompraContext);
+  const { state, setState, valorTotal, limparLista } = useContext(CompraContext);
 
-  // const [numeroQuantidade, setNumeroQuantidade] = useState(10);
   const [lista, setLista] = useState<CarrinhoProdutoTypes[]>([]);
-
-  // const listaCarrinhoCompras = [
-  //   listaProdutos[0],
-  //   listaProdutos[1],
-  //   listaProdutos[2],
-  //   listaProdutos[3],
-  //   listaProdutos[4],
-  //   listaProdutos[5],
-  // ];
 
   useEffect(() => {
     setLista(state);
   }, [state]);
-
 
   return (
     <>
@@ -39,9 +28,6 @@ export function CarrinhoCompras() {
       <MainStyled>
         <PrecoTotal>
           <span>Total:</span>
-          {/* <span>{formatadorMonetario(listaCarrinhoCompras.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.preco;
-          }, 0))}</span> */}
           <span>{formatadorMonetario(valorTotal)}</span>
         </PrecoTotal>
         <ContainerBotoes>
@@ -71,6 +57,7 @@ export function CarrinhoCompras() {
               }).then(({ isConfirmed }) => {
                 if (isConfirmed) {
                   /* Logica que limpa o carrinho de compras */
+                  limparLista();
                   navigation("/");
                 }
               })
@@ -112,14 +99,20 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer adicionar?",
+                          id: item.id,
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
-                            let valor = parseInt(value);
-                            console.log(valor);
+                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+                            // let validaValorQuantidade = (isNaN(novaQuantidade)) ? 1 : novaQuantidade;
 
-                            // let validaValor = (isNaN(valor)) ? 1 : valor;
-                            // setNumeroQuantidade(validaValor);
-                            /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
+                            let itemAtualizado = state.map((itemBusca) => {
+                              if (itemBusca.id === item.id) {
+                                itemBusca.quantidade = itemBusca.quantidade + novaQuantidade;
+                                itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
+                              }
+                              return itemBusca;
+                            });
+                            setState(itemAtualizado);
                           }
                         });
                       }}
@@ -135,14 +128,20 @@ export function CarrinhoCompras() {
                         ModalQuantidade({
                           titulo: "Quantidade",
                           mensagem: "Quanto o valor que você quer remover?",
+                          id: item.id,
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
-                            let valor = parseInt(value);
-                            console.log(valor);
+                            let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
+                            // let validaValorQuantidade = (isNaN(novaQuantidade)) ? 1 : novaQuantidade;
 
-                            // let validaValor = (isNaN(valor)) ? 1 : valor;
-                            // setNumeroQuantidade(validaValor);
-                            /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
+                            let itemAtualizado = state.map((itemBusca) => {
+                              if (itemBusca.id === item.id) {
+                                itemBusca.quantidade = itemBusca.quantidade - novaQuantidade;
+                                itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
+                              }
+                              return itemBusca;
+                            });
+                            setState(itemAtualizado);
                           }
                         });
                       }}

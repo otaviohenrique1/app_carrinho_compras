@@ -52,7 +52,6 @@ export function HomePage() {
                       }]);
                     } else {
                       let itemAtualizado = state.map((itemBusca) => {
-
                         if (itemBusca.id === item.id) {
                           itemBusca.quantidade = itemBusca.quantidade + 1;
                           itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
