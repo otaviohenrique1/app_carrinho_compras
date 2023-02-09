@@ -10,14 +10,14 @@ import { Imagem, ItemImagem } from "../components/Imagem";
 import { CompraContext } from "../context/compra";
 
 export function HomePage() {
-  const { state, setState } = useContext(CompraContext);
+  const { state, adicionarProduto } = useContext(CompraContext);
   const navigation = useNavigate();
 
   useEffect(() => {
     console.log(state);
   }, [state])
-  
-  
+
+
   return (
     <>
       <AppBar titulo="HomePage" />
@@ -35,31 +35,14 @@ export function HomePage() {
                 </ItemDados>
                 <ItemBotoes>
                   <Botao
-                  onClick={() => {
-                    let buscaItem = state.find((itemBusca) => itemBusca.id === item.id);
-
-                    if (!buscaItem) {
-                      setState([...state, {
-                        id: item.id,
-                        nome: item.nome,
-                        imagem: item.imagem,
-                        categoria: item.categoria,
-                        descricao: item.descricao,
-                        preco: item.preco,
+                    onClick={() => {
+                      let data = {
+                        ...item,
                         quantidade: 1,
                         precoQuantidade: item.preco * 1,
-                      }]);
-                    } else {
-                      let itemAtualizado = state.map((itemBusca) => {
-                        if (itemBusca.id === item.id) {
-                          itemBusca.quantidade = itemBusca.quantidade + 1;
-                          itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
-                        }
-                        return itemBusca;
-                      });
-                      setState(itemAtualizado);
-                    }
-                  }}
+                      };
+                      adicionarProduto(data, item.id);
+                    }}
                     color="#008000"
                     font_color="#ffffff"
                     color_hover="#00cc00"

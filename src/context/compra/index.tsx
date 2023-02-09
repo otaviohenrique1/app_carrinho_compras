@@ -22,6 +22,8 @@ export type CompraType = CarrinhoProdutoTypes[];
 export type PropsCompraContext = {
   state: CompraType;
   setState: Dispatch<SetStateAction<CompraType>>;
+  adicionarProduto: (produto: CarrinhoProdutoTypes, id: number) => void;
+  atualizarQuantidadeProduto: (produto: CarrinhoProdutoTypes, id: number) => void;
   valorTotal: number;
   limparLista: () => void;
   removerProduto: (id: number) => void;
@@ -32,6 +34,8 @@ export type PropsCompraContext = {
 export const ValoresIniciais: PropsCompraContext = {
   state: [],
   setState: () => { },
+  adicionarProduto: () => { },
+  atualizarQuantidadeProduto: () => { },
   valorTotal: 0,
   limparLista: () => { },
   removerProduto: () => { },
@@ -47,6 +51,36 @@ export interface CompraContextProviderProps {
 
 export const CompraContextProvider: FC<CompraContextProviderProps> = (props: CompraContextProviderProps) => {
   const [state, setState] = useState(ValoresIniciais.state);
+
+  function adicionarProduto(produto: CarrinhoProdutoTypes, id: number) {
+    let buscaItem = state.find((itemBusca) => itemBusca.id === id);
+
+    if (!buscaItem) {
+      setState([...state, {
+        id: produto.id,
+        nome: produto.nome,
+        imagem: produto.imagem,
+        categoria: produto.categoria,
+        descricao: produto.descricao,
+        preco: produto.preco,
+        quantidade: 1,
+        precoQuantidade: produto.preco * 1,
+      }]);
+    } else {
+      atualizarQuantidadeProduto(produto, id);
+    }
+  }
+
+  function atualizarQuantidadeProduto(produto: CarrinhoProdutoTypes, id: number) {
+    let itemAtualizado = state.map((itemBusca) => {
+      if (itemBusca.id === id) {
+        itemBusca.quantidade = itemBusca.quantidade + 1;
+        itemBusca.precoQuantidade = itemBusca.preco * itemBusca.quantidade;
+      }
+      return itemBusca;
+    });
+    setState(itemAtualizado);
+  }
 
   function calculaValorTotal() {
     return state.reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual.precoQuantidade, 0);
@@ -87,11 +121,13 @@ export const CompraContextProvider: FC<CompraContextProviderProps> = (props: Com
       value={{
         state,
         setState,
+        adicionarProduto,
+        atualizarQuantidadeProduto,
         valorTotal: calculaValorTotal(),
         limparLista,
         removerProduto,
         adicionarQuantidade,
-        removerQuantidade
+        removerQuantidade,
       }}
     >
       {props.children}

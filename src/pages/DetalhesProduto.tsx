@@ -6,6 +6,7 @@ import { Main } from "../components/Main";
 import { formatadorMonetario } from "../utils/formatadores";
 import styled from "styled-components";
 import { Galeria } from "../components/Galeria";
+import { ListaItem } from "../components/ListaItem";
 
 const dadosIniciais: ListaProdutosTypes = {
   id: 0,
@@ -13,7 +14,7 @@ const dadosIniciais: ListaProdutosTypes = {
   preco: 0,
   categoria: "",
   descricao: "",
-  imagem: []
+  imagem: [],
 };
 
 export function DetalhesProduto() {
@@ -32,71 +33,40 @@ export function DetalhesProduto() {
       <AppBar titulo="DetalhesProduto" />
       <Main>
         <DetalhesLista>
-          <li>
-            <span>ID:</span>
-            <span>{data.id}</span>
-          </li>
-          <li>
-            <span>Nome:</span>
-            <span>{data.nome}</span>
-          </li>
-          <li>
-            <span>Preço:</span>
-            <span>{formatadorMonetario(data.preco)}</span>
-          </li>
-          <li>
-            <span>Categoria:</span>
-            <span>{data.categoria}</span>
-          </li>
-          <li>
-            <span>Descrição:</span>
-            <span>{data.descricao}</span>
-          </li>
-          <li>
-            <div>
-              {/* <Galeria2 lista_imagens_url={data.imagem}/> */}
-              <Galeria lista_imagens_url={data.imagem}/>
-              {/* <Galeria>
-                {data.imagem.map((item, index) => {
-                  return (
-                    <Imagem src={item} alt={`Imagem-${index}`} />
-                  );
-                })}
-              </Galeria> */}
-            </div>
-          </li>
+          <ListaItem
+            label="ID:"
+            data={data.id}
+            fontSize="20px"
+          />
+          <ListaItem
+            label="Nome:"
+            data={data.nome}
+            fontSize="20px"
+          />
+          <ListaItem
+            label="Preço:"
+            data={formatadorMonetario(data.preco)}
+            fontSize="20px"
+          />
+          <ListaItem
+            label="Categoria:"
+            data={data.categoria}
+            fontSize="20px"
+          />
+          <ListaItem
+            label="Descrição:"
+            data={data.descricao}
+            fontSize="20px"
+          />
+          <Galeria lista_imagens_url={data.imagem} />
         </DetalhesLista>
       </Main>
     </>
   );
 }
 
-const DetalhesLista = styled.ul`
-  /* li:nth-child(n+1):nth-child(-n+5) {
-    margin-bottom: 10px;
-  } */
-
-  span:first-child {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-
-  span:last-child {
-    text-align: justify;
-  }
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  li:last-child {
-    margin-bottom: 0;
-  }
+const DetalhesLista = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
-
-// const Galeria = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   gap: 5px;
-// `;
