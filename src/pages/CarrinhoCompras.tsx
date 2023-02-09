@@ -4,7 +4,7 @@ import { AppBar } from "../components/AppBar";
 import { Main } from "../components/Main";
 import { Botao } from "../components/Botao";
 import { formatadorMonetario } from "../utils/formatadores";
-import { listaProdutos } from "../utils/listaProdutos";
+// import { listaProdutos } from "../utils/listaProdutos";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
@@ -13,10 +13,10 @@ import { CarrinhoProdutoTypes, CompraContext } from "../context/compra";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
-  
+
   const { state, /* setState, */ valorTotal } = useContext(CompraContext);
 
-  const [numeroQuantidade, setNumeroQuantidade] = useState(10);
+  // const [numeroQuantidade, setNumeroQuantidade] = useState(10);
   const [lista, setLista] = useState<CarrinhoProdutoTypes[]>([]);
 
   // const listaCarrinhoCompras = [
@@ -27,11 +27,11 @@ export function CarrinhoCompras() {
   //   listaProdutos[4],
   //   listaProdutos[5],
   // ];
-  
+
   useEffect(() => {
     setLista(state);
   }, [state]);
-  
+
 
   return (
     <>
@@ -115,8 +115,10 @@ export function CarrinhoCompras() {
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
                             let valor = parseInt(value);
-                            let validaValor = (isNaN(valor)) ? 1 : valor;
-                            setNumeroQuantidade(validaValor);
+                            console.log(valor);
+
+                            // let validaValor = (isNaN(valor)) ? 1 : valor;
+                            // setNumeroQuantidade(validaValor);
                             /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
                           }
                         });
@@ -136,8 +138,10 @@ export function CarrinhoCompras() {
                         }).then(({ isConfirmed, value }) => {
                           if (isConfirmed) {
                             let valor = parseInt(value);
-                            let validaValor = (isNaN(valor)) ? 1 : valor;
-                            setNumeroQuantidade(validaValor);
+                            console.log(valor);
+
+                            // let validaValor = (isNaN(valor)) ? 1 : valor;
+                            // setNumeroQuantidade(validaValor);
                             /* Logica de alterar o valor da quantidade do produto no carrinho de compras */
                           }
                         });
