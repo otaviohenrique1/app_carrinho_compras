@@ -31,10 +31,15 @@ export const Botao = styled.button<BotaoStyleProps>`
   }
 `;
 
-export const ItemBotoes = styled.div`
+export interface ItemBotoesStyledTypes {
+  flexDirection: "row" | "row-reverse" | "column" | "column-reverse";
+  gap: string;
+}
+
+export const ItemBotoes = styled.div<ItemBotoesStyledTypes>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => props.flexDirection};
   justify-content: center;
   margin-right: 10px;
-  gap: 5px
+  gap: ${(props) => props.gap};
 `;

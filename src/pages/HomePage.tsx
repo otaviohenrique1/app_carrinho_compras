@@ -41,7 +41,10 @@ export function HomePage() {
                     fontSize="18px"
                   />
                 </ItemDadosContainer>
-                <ItemBotoes>
+                <ItemBotoes
+                  flexDirection="column"
+                  gap="15px"
+                >
                   <Botao
                     onClick={() => {
                       let data = {

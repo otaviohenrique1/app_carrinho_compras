@@ -13,7 +13,10 @@ export function AppBar(props: AppBarProps) {
   return (
     <AppBarNav>
       <AppBarH1>{titulo}</AppBarH1>
-      <ItemBotoesStyled>
+      <ItemBotoes
+        flexDirection="row"
+        gap="5px"
+      >
         <BotaoStyled
           onClick={() => navigation("/")}
           color="#005580"
@@ -32,14 +35,10 @@ export function AppBar(props: AppBarProps) {
           color_active="#00008b"
           font_color_active="#ffffff"
         >Carrinho</BotaoStyled>
-      </ItemBotoesStyled>
+      </ItemBotoes>
     </AppBarNav>
   );
 }
-
-const ItemBotoesStyled = styled(ItemBotoes)`
-  flex-direction: row;
-`;
 
 const BotaoStyled = styled(Botao)`
   width: 100px;

@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { CompraContext } from "../context/compra";
 import { ListaItem } from "../components/ListaItem";
 import { listaMetodosPagamento } from "../utils/listas";
+import { valoresIniciaisUmMetodoPagamento } from "../utils/constantes";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -38,8 +39,10 @@ export function FinalizarCompra() {
         mensagem: "Adicione um produto para poder continuar!",
       });
     } else {
+      let metodoPagamentoEscolhido = buscaNaListaMetodoPagamento(values.metodo_pagamento)
+
       ModalFinalizarCompra({
-        metodoPagamento: values.metodo_pagamento,
+        metodoPagamento: metodoPagamentoEscolhido.label,
         valorTotalCompra: formatadorMonetario(valorTotal)
       }).then(({ isConfirmed }) => {
         if (isConfirmed) {
@@ -48,34 +51,43 @@ export function FinalizarCompra() {
         }
       });
     }
+  }
 
+  function buscaNaListaMetodoPagamento(metodo_pagamento: string) {
+    let metodoPagamento = listaMetodosPagamento.find((item) => item.value === metodo_pagamento);
+    let validaPagamento = (typeof metodoPagamento === "undefined") ? valoresIniciaisUmMetodoPagamento : metodoPagamento;
+    return validaPagamento;
   }
 
   return (
     <>
       <AppBar titulo="Finalizar Compra" />
       <Main>
-        <ValorTotalContainer>
-          <ListaItem
-            label="Total:"
-            data={formatadorMonetario(valorTotal)}
-            fontSize="25px"
-          />
-        </ValorTotalContainer>
         <FormContainer>
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
           >
             {({ values }) => {
-              const metodoEscolhido = (values.metodo_pagamento) ? values.metodo_pagamento : "----";
+              let metodoEscolhido = buscaNaListaMetodoPagamento(values.metodo_pagamento);
+              const metodoEscolhidovalidado = (values.metodo_pagamento) ? metodoEscolhido.label : "----";
 
               return (
                 <FormStylded>
-                  <SubTitulo>Metodos de pagamento</SubTitulo>
+                  <ValorTotalContainer>
+                    <ListaItem
+                      label="Total:"
+                      data={formatadorMonetario(valorTotal)}
+                      fontSize="25px"
+                    />
+                  </ValorTotalContainer>
+                  <SubTitulo>Métodos de pagamento</SubTitulo>
                   <MetodoEscolhido>
-                    <span>Metodo escolhido:</span>
-                    <span>{metodoEscolhido}</span>
+                    <ListaItem
+                      label="Metodo escolhido:"
+                      data={metodoEscolhidovalidado}
+                      fontSize=""
+                    />
                   </MetodoEscolhido>
                   <RadioGroup
                     role="group"
@@ -84,6 +96,7 @@ export function FinalizarCompra() {
                     {listaMetodosPagamento.map((item, index) => {
                       return (
                         <Radio
+                          key={index}
                           name="metodo_pagamento"
                           id={item.value}
                           value={item.value}
@@ -151,15 +164,11 @@ const ContainerBotao = styled.div`
   gap: 20px;
 `;
 
-const MetodoEscolhido = styled.p`
+const MetodoEscolhido = styled.div`
   border: 1px solid black;
   padding: 5px;
-  text-align: center;
-
-  span:first-child {
-    font-weight: bold;
-    margin-right: 10px;
-  }
+  display: flex;
+  justify-content: center;
 `;
 
 const SubTitulo = styled.h2`
@@ -169,7 +178,6 @@ const SubTitulo = styled.h2`
 `;
 
 const ValorTotalContainer = styled.div`
-  margin-bottom: 25px;
   margin-top: 25px;
 `;
 

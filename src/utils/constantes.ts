@@ -1,4 +1,10 @@
 import { CarrinhoProdutoTypes } from "../context/compra";
+import { ListaMetodosPagamentoTypes } from "./listas";
+
+export const valoresIniciaisUmMetodoPagamento:ListaMetodosPagamentoTypes = {
+  value: "",
+  label: "",
+};
 
 export const valoresIniciaisUmProduto: CarrinhoProdutoTypes = {
   id: 0,

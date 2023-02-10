@@ -1,4 +1,9 @@
-export const listaMetodosPagamento = [
+export interface ListaMetodosPagamentoTypes {
+  value: string;
+  label: string;
+}
+
+export const listaMetodosPagamento: ListaMetodosPagamentoTypes[] = [
   {
     value: "cartao",
     label: "Cartão"
@@ -34,7 +39,7 @@ export interface ListaProdutosTypes {
   imagem: string[];
 }
 
-export const listaProdutos = [
+export const listaProdutos: ListaProdutosTypes[] = [
   {
     "id": 1,
     "nome": "Leite de vaca",

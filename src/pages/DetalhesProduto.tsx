@@ -7,7 +7,7 @@ import { formatadorMonetario } from "../utils/formatadores";
 import styled from "styled-components";
 import { Galeria } from "../components/Galeria";
 import { ListaItem } from "../components/ListaItem";
-import { Botao } from "../components/Botao";
+import { Botao, ItemBotoes } from "../components/Botao";
 import { CompraContext } from "../context/compra";
 
 const dadosIniciais: ListaProdutosTypes = {
@@ -63,43 +63,39 @@ export function DetalhesProduto() {
             fontSize="20px"
           />
           <Galeria lista_imagens_url={data.imagem} />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "row",
-              gap: "10px",
-            }}
+          <ItemBotoes
+            flexDirection="row"
+            gap="10px"
           >
-              <Botao
-                style={{ maxWidth: "290px" }}
-                onClick={() => {
-                  let produto = {
-                    ...data,
-                    quantidade: 1,
-                    precoQuantidade: data.preco * 1,
-                  };
-                  adicionarProduto(produto, data.id);
-                  navigation("/carrinho");
-                }}
-                color="#008000"
-                font_color="#ffffff"
-                color_hover="#00cc00"
-                font_color_hover="#000000"
-                color_active="#003300"
-                font_color_active="#ffffff"
-              >Carrinho</Botao>
-              <Botao
-                style={{ maxWidth: "290px" }}
-                onClick={() => navigation("/")}
-                color="#800080"
-                font_color="#ffffff"
-                color_hover="#ff33ff"
-                font_color_hover="#000000"
-                color_active="#4d004d"
-                font_color_active="#ffffff"
-              >Início</Botao>
-          </div>
+            <Botao
+              style={{ maxWidth: "290px" }}
+              onClick={() => {
+                let produto = {
+                  ...data,
+                  quantidade: 1,
+                  precoQuantidade: data.preco * 1,
+                };
+                adicionarProduto(produto, data.id);
+                navigation("/carrinho");
+              }}
+              color="#008000"
+              font_color="#ffffff"
+              color_hover="#00cc00"
+              font_color_hover="#000000"
+              color_active="#003300"
+              font_color_active="#ffffff"
+            >Carrinho</Botao>
+            <Botao
+              style={{ maxWidth: "290px" }}
+              onClick={() => navigation("/")}
+              color="#800080"
+              font_color="#ffffff"
+              color_hover="#ff33ff"
+              font_color_hover="#000000"
+              color_active="#4d004d"
+              font_color_active="#ffffff"
+            >Início</Botao>
+          </ItemBotoes>
         </DetalhesLista>
       </Main>
     </>

@@ -129,7 +129,10 @@ export function CarrinhoCompras() {
                           fontSize="18px"
                         />
                       </ItemDadosContainer>
-                      <ItemBotoes>
+                      <ItemBotoes
+                        flexDirection="column"
+                        gap="10px"
+                      >
                         <Botao
                           onClick={() => {
                             ModalQuantidade({
