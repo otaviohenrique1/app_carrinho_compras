@@ -27,10 +27,11 @@ export function CarrinhoCompras() {
     <>
       <AppBar titulo="Carrinho" />
       <MainStyled>
-        <PrecoTotal>
-          <span>Total:</span>
-          <span>{formatadorMonetario(valorTotal)}</span>
-        </PrecoTotal>
+        <ListaItem
+          label="Total:"
+          data={formatadorMonetario(valorTotal)}
+          fontSize="20px"
+        />
         <ContainerBotoes>
           <BotaoStyled
             type="button"
@@ -84,7 +85,7 @@ export function CarrinhoCompras() {
                   return (
                     <CarrinhoListaItem key={index}>
                       <ItemImagem>
-                        <ImagemStyled
+                        <Imagem
                           src={item.imagem[0]}
                           alt={item.nome}
                         />
@@ -202,10 +203,6 @@ export function CarrinhoCompras() {
   );
 }
 
-const ImagemStyled = styled(Imagem)`
-  width: 150px;
-`;
-
 const CarrinhoLista = styled.div`
   display: flex;
   flex-direction: column;
@@ -233,15 +230,6 @@ const MainStyled = styled(Main)`
   display: flex;
   flex-direction: column;
   gap: 15px;
-`;
-
-const PrecoTotal = styled.p`
-  font-size: 20px;
-
-  span:first-child {
-    font-weight: bold;
-    margin-right: 5px;
-  }
 `;
 
 const ContainerBotoes = styled.div`

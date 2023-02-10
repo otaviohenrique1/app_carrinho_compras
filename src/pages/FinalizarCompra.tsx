@@ -10,6 +10,7 @@ import { ModalAviso, ModalFinalizarCompra, ModalMensagem } from "../components/M
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CompraContext } from "../context/compra";
+import { ListaItem } from "../components/ListaItem";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -39,8 +40,7 @@ export function FinalizarCompra() {
       ModalFinalizarCompra({
         metodoPagamento: values.metodo_pagamento,
         valorTotalCompra: formatadorMonetario(valorTotal)
-      })
-      .then(({ isConfirmed }) => {
+      }).then(({ isConfirmed }) => {
         if (isConfirmed) {
           limparLista();
           navigation("/");
@@ -55,10 +55,11 @@ export function FinalizarCompra() {
       <AppBar titulo="Finalizar Compra" />
       <Main>
         <ValorTotalContainer>
-          <SubTituloStyled>
-            <span>Total:</span>
-            <span>{formatadorMonetario(valorTotal)}</span>
-          </SubTituloStyled>
+          <ListaItem
+            label="Total:"
+            data={formatadorMonetario(valorTotal)}
+            fontSize="25px"
+          />
         </ValorTotalContainer>
         <FormContainer>
           <Formik
@@ -190,16 +191,6 @@ const SubTitulo = styled.h2`
   font-weight: bold;
   font-size: 20px;
   text-align: center;
-`;
-
-const SubTituloStyled = styled(SubTitulo)`
-  span:first-child {
-    margin-right: 10px;
-  }
-
-  span:last-child {
-    font-weight: normal;
-  }
 `;
 
 const ValorTotalContainer = styled.div`
