@@ -8,6 +8,7 @@ import { Botao, ItemBotoes } from "../components/Botao";
 import { Main } from "../components/Main";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { CompraContext } from "../context/compra";
+import { ListaItem } from "../components/ListaItem";
 
 export function HomePage() {
   const { state, adicionarProduto } = useContext(CompraContext);
@@ -28,10 +29,18 @@ export function HomePage() {
                 <ItemImagem>
                   <Imagem src={item.imagem[0]} alt={item.nome} />
                 </ItemImagem>
-                <ItemDados>
-                  <p>{item.nome}</p>
-                  <p>{formatadorMonetario(item.preco)}</p>
-                </ItemDados>
+                <ItemDadosContainer>
+                  <ListaItem
+                    label="Nome:"
+                    data={item.nome}
+                    fontSize="18px"
+                  />
+                  <ListaItem
+                    label="Preço unidade:"
+                    data={formatadorMonetario(item.preco)}
+                    fontSize="18px"
+                  />
+                </ItemDadosContainer>
                 <ItemBotoes>
                   <Botao
                     onClick={() => {
@@ -76,14 +85,10 @@ const Item = styled.li`
   grid-template-columns: 1fr 3fr 1fr;
 `;
 
-const ItemDados = styled.div`
+const ItemDadosContainer = styled.div`
   padding: 15px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-
-  p {
-    font-size: 20px;
-  }
 `;

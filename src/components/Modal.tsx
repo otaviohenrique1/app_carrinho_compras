@@ -82,3 +82,15 @@ const Titulo = styled.h1`
   font-size: 25px;
   text-align: center;
 `;
+
+export function ModalMensagem(props: ModalAvisoProps) {
+  const { titulo, mensagem } = props;
+
+  return SwalModal.fire({
+    icon: "warning",
+    title: <p>{titulo}</p>,
+    html: <p>{mensagem}</p>,
+    confirmButtonText: 'Fechar',
+    confirmButtonColor: "blue",
+  });
+}

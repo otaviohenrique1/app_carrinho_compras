@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { ModalAviso, ModalQuantidade } from "../components/Modal";
 import { CarrinhoProdutoTypes, CompraContext, valoresIniciaisUmProduto } from "../context/compra";
 import Swal from 'sweetalert2';
+import { ListaVazia } from "../components/ListaVazia";
+import { ListaItem } from "../components/ListaItem";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
@@ -31,6 +33,7 @@ export function CarrinhoCompras() {
         </PrecoTotal>
         <ContainerBotoes>
           <BotaoStyled
+            type="button"
             onClick={() => navigation("/")}
             color="#008000"
             font_color="#ffffff"
@@ -40,6 +43,7 @@ export function CarrinhoCompras() {
             font_color_active="#ffffff"
           >Continuar comprando</BotaoStyled>
           <BotaoStyled
+            type="button"
             onClick={() => navigation("/finalizar")}
             color="#800080"
             font_color="#ffffff"
@@ -49,6 +53,7 @@ export function CarrinhoCompras() {
             font_color_active="#ffffff"
           >Finalizar</BotaoStyled>
           <BotaoStyled
+            type="button"
             onClick={() => {
               ModalAviso({
                 titulo: "Aviso",
@@ -85,22 +90,26 @@ export function CarrinhoCompras() {
                         />
                       </ItemImagem>
                       <ItemDadosContainer>
-                        <ItemDados>
-                          <span>Nome:</span>
-                          <span>{item.nome}</span>
-                        </ItemDados>
-                        <ItemDados>
-                          <span>Preço unidade:</span>
-                          <span>{formatadorMonetario(item.preco)}</span>
-                        </ItemDados>
-                        <ItemDados>
-                          <span>Quantidade:</span>
-                          <span>{item.quantidade}</span>
-                        </ItemDados>
-                        <ItemDados>
-                          <span>Preco X Quantidade:</span>
-                          <span>{formatadorMonetario(item.precoQuantidade)}</span>
-                        </ItemDados>
+                        <ListaItem
+                          label="Nome:"
+                          data={item.nome}
+                          fontSize="18px"
+                        />
+                        <ListaItem
+                          label="Preço unidade:"
+                          data={formatadorMonetario(item.preco)}
+                          fontSize="18px"
+                        />
+                        <ListaItem
+                          label="Quantidade:"
+                          data={item.quantidade}
+                          fontSize="18px"
+                        />
+                        <ListaItem
+                          label="Preco X Quantidade:"
+                          data={formatadorMonetario(item.precoQuantidade)}
+                          fontSize="18px"
+                        />
                       </ItemDadosContainer>
                       <ItemBotoes>
                         <Botao
@@ -120,6 +129,7 @@ export function CarrinhoCompras() {
                               }
                             });
                           }}
+                          type="button"
                           color="#800080"
                           font_color="#ffffff"
                           color_hover="#ff33ff"
@@ -154,6 +164,7 @@ export function CarrinhoCompras() {
                               }
                             });
                           }}
+                          type="button"
                           color="#ffa500"
                           font_color="#ffffff"
                           color_hover="#ffd280"
@@ -172,6 +183,7 @@ export function CarrinhoCompras() {
                               }
                             });
                           }}
+                          type="button"
                           color="#ff0000"
                           font_color="#ffffff"
                           color_hover="#ff8080"
@@ -189,21 +201,6 @@ export function CarrinhoCompras() {
     </>
   );
 }
-
-const ListaVazia = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: coral;
-  padding: 10px;
-  border-radius: 10px;
-  height: 100px;
-  
-  p {
-    font-size: 30px;
-  }
-`;
 
 const ImagemStyled = styled(Imagem)`
   width: 150px;
@@ -230,15 +227,6 @@ const ItemDadosContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-`;
-
-const ItemDados = styled.p`
-  font-size: 18px;
-
-  span:first-child {
-    font-weight: bold;
-    margin-right: 5px;
-  }
 `;
 
 const MainStyled = styled(Main)`

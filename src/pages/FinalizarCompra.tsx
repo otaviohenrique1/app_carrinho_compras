@@ -6,7 +6,7 @@ import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
 import styled from "styled-components";
 import { formatadorMonetario } from "../utils/formatadores";
-import { ModalAviso, ModalFinalizarCompra } from "../components/Modal";
+import { ModalAviso, ModalFinalizarCompra, ModalMensagem } from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CompraContext } from "../context/compra";
@@ -20,21 +20,34 @@ const initialValues: FormTypes = {
 };
 
 export function FinalizarCompra() {
-  const { valorTotal, limparLista } = useContext(CompraContext);
+  const { valorTotal, limparLista, state } = useContext(CompraContext);
 
   const navigation = useNavigate();
 
   function onSubmit(values: FormTypes, formikHelpers: FormikHelpers<FormTypes>) {
-    ModalFinalizarCompra({
-      metodoPagamento: values.metodo_pagamento,
-      valorTotalCompra: formatadorMonetario(valorTotal)
-    })
-    .then(({ isConfirmed }) => {
-      if (isConfirmed) {
-        limparLista();
-        navigation("/");
-      }
-    })
+    if (values.metodo_pagamento === "") {
+      ModalMensagem({
+        titulo: "Aviso",
+        mensagem: "Adicione um metodo de pagamento para poder continuar!",
+      });
+    } else if (state.length === 0) {
+      ModalMensagem({
+        titulo: "Aviso",
+        mensagem: "Adicione um produto para poder continuar!",
+      });
+    } else {
+      ModalFinalizarCompra({
+        metodoPagamento: values.metodo_pagamento,
+        valorTotalCompra: formatadorMonetario(valorTotal)
+      })
+      .then(({ isConfirmed }) => {
+        if (isConfirmed) {
+          limparLista();
+          navigation("/");
+        }
+      });
+    }
+
   }
 
   return (
@@ -136,6 +149,8 @@ export function FinalizarCompra() {
                           }
                         });
                       }}
+                      type="button"
+                      disabled={(state.length === 0) ? true : false}
                       color="#ff0000"
                       font_color="#ffffff"
                       color_hover="#ff8080"
