@@ -17,7 +17,6 @@ export function HomePage() {
     console.log(state);
   }, [state])
 
-
   return (
     <>
       <AppBar titulo="HomePage" />

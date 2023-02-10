@@ -6,7 +6,7 @@ import { Radio } from "../components/Radio";
 import { Botao } from "../components/Botao";
 import styled from "styled-components";
 import { formatadorMonetario } from "../utils/formatadores";
-import { ModalAviso } from "../components/Modal";
+import { ModalAviso, ModalFinalizarCompra } from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CompraContext } from "../context/compra";
@@ -25,7 +25,16 @@ export function FinalizarCompra() {
   const navigation = useNavigate();
 
   function onSubmit(values: FormTypes, formikHelpers: FormikHelpers<FormTypes>) {
-    // 
+    ModalFinalizarCompra({
+      metodoPagamento: values.metodo_pagamento,
+      valorTotalCompra: formatadorMonetario(valorTotal)
+    })
+    .then(({ isConfirmed }) => {
+      if (isConfirmed) {
+        limparLista();
+        navigation("/");
+      }
+    })
   }
 
   return (
@@ -122,10 +131,10 @@ export function FinalizarCompra() {
                           mensagem: "Deseja cancelar a compra?",
                         }).then(({ isConfirmed }) => {
                           if (isConfirmed) {
-                            /* Logica que limpa o carrinho de compras */
+                            limparLista();
                             navigation("/");
                           }
-                        })
+                        });
                       }}
                       color="#ff0000"
                       font_color="#ffffff"

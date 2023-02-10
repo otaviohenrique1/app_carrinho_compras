@@ -147,9 +147,7 @@ export function CarrinhoCompras() {
                             }).then(({ isConfirmed, value }) => {
                               if (isConfirmed) {
                                 let novaQuantidade = parseInt(typeof value === "undefined" ? "" : value);
-
                                 removerQuantidade(item.id, novaQuantidade);
-
                                 if (item.quantidade === 0) {
                                   removerProduto(item.id);
                                 }
