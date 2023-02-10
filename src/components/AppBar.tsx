@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Botao } from "./Botao";
+import { Botao, ItemBotoes } from "./Botao";
 
 interface AppBarProps {
   titulo: string;
@@ -13,21 +13,36 @@ export function AppBar(props: AppBarProps) {
   return (
     <AppBarNav>
       <AppBarH1>{titulo}</AppBarH1>
-      <BotaoStyled
-        onClick={() => navigation("/carrinho")}
-        color="#0000cc"
-        font_color="#ffffff"
-        color_hover="#add8e6"
-        font_color_hover="#000000"
-        color_active="#00008b"
-        font_color_active="#ffffff"
-      >Carrinho</BotaoStyled>
+      <ItemBotoesStyled>
+        <BotaoStyled
+          onClick={() => navigation("/")}
+          color="#005580"
+          font_color="#ffffff"
+          color_hover="#99ddff"
+          font_color_hover="#000000"
+          color_active="#00334d"
+          font_color_active="#ffffff"
+        >Inicio</BotaoStyled>
+        <BotaoStyled
+          onClick={() => navigation("/carrinho")}
+          color="#0000cc"
+          font_color="#ffffff"
+          color_hover="#add8e6"
+          font_color_hover="#000000"
+          color_active="#00008b"
+          font_color_active="#ffffff"
+        >Carrinho</BotaoStyled>
+      </ItemBotoesStyled>
     </AppBarNav>
   );
 }
 
+const ItemBotoesStyled = styled(ItemBotoes)`
+  flex-direction: row;
+`;
+
 const BotaoStyled = styled(Botao)`
-  max-width: 100px;
+  width: 100px;
 `;
 
 const AppBarNav = styled.nav`

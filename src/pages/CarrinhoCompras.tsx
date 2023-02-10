@@ -6,11 +6,12 @@ import { Botao, ItemBotoes } from "../components/Botao";
 import { formatadorMonetario } from "../utils/formatadores";
 import { Imagem, ItemImagem } from "../components/Imagem";
 import { useNavigate } from "react-router-dom";
-import { ModalAviso, ModalQuantidade } from "../components/Modal";
-import { CarrinhoProdutoTypes, CompraContext, valoresIniciaisUmProduto } from "../context/compra";
+import { ModalAviso, ModalMensagem, ModalQuantidade } from "../components/Modal";
+import { CarrinhoProdutoTypes, CompraContext } from "../context/compra";
 import Swal from 'sweetalert2';
 import { ListaVazia } from "../components/ListaVazia";
 import { ListaItem } from "../components/ListaItem";
+import { valoresIniciaisUmProduto } from "../utils/constantes";
 
 export function CarrinhoCompras() {
   const navigation = useNavigate();
@@ -45,7 +46,16 @@ export function CarrinhoCompras() {
           >Continuar comprando</BotaoStyled>
           <BotaoStyled
             type="button"
-            onClick={() => navigation("/finalizar")}
+            onClick={() => {
+              if (state.length === 0) {
+                ModalMensagem({
+                  titulo: "Aviso",
+                  mensagem: "Adicione um produto para poder continuar!",
+                });
+              } else {
+                navigation("/finalizar");
+              }
+            }}
             color="#800080"
             font_color="#ffffff"
             color_hover="#ff33ff"
@@ -56,15 +66,22 @@ export function CarrinhoCompras() {
           <BotaoStyled
             type="button"
             onClick={() => {
-              ModalAviso({
-                titulo: "Aviso",
-                mensagem: "Deseja cancelar a compra?",
-              }).then(({ isConfirmed }) => {
-                if (isConfirmed) {
-                  limparLista();
-                  navigation("/");
-                }
-              })
+              if (state.length === 0) {
+                ModalMensagem({
+                  titulo: "Aviso",
+                  mensagem: "Adicione um produto para poder continuar!",
+                });
+              } else {
+                ModalAviso({
+                  titulo: "Aviso",
+                  mensagem: "Deseja cancelar a compra?",
+                }).then(({ isConfirmed }) => {
+                  if (isConfirmed) {
+                    limparLista();
+                    navigation("/");
+                  }
+                });
+              }
             }}
             color="#ff0000"
             font_color="#ffffff"

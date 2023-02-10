@@ -1,3 +1,30 @@
+export const listaMetodosPagamento = [
+  {
+    value: "cartao",
+    label: "Cartão"
+  },
+  {
+    value: "boleto",
+    label: "Boleto"
+  },
+  {
+    value: "pix",
+    label: "Pix"
+  },
+  {
+    value: "paypal",
+    label: "Paypal"
+  },
+  {
+    value: "credito",
+    label: "Credito na loja"
+  },
+  {
+    value: "transferencia",
+    label: "Transferencia bancaria"
+  },
+];
+
 export interface ListaProdutosTypes {
   id: number;
   nome: string;
@@ -14,7 +41,7 @@ export const listaProdutos = [
     "preco": 5,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -30,7 +57,7 @@ export const listaProdutos = [
     "preco": 6,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -46,7 +73,7 @@ export const listaProdutos = [
     "preco": 1,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -62,7 +89,7 @@ export const listaProdutos = [
     "preco": 1.5,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -78,7 +105,7 @@ export const listaProdutos = [
     "preco": 2,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -94,7 +121,7 @@ export const listaProdutos = [
     "preco": 1,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -110,7 +137,7 @@ export const listaProdutos = [
     "preco": 20,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -126,7 +153,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -142,7 +169,7 @@ export const listaProdutos = [
     "preco": 1,
     "categoria": "Material Escolar",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -158,7 +185,7 @@ export const listaProdutos = [
     "preco": 5000,
     "categoria": "Eletrodoméstico",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -174,7 +201,7 @@ export const listaProdutos = [
     "preco": 3,
     "categoria": "Material Escolar",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -190,7 +217,7 @@ export const listaProdutos = [
     "preco": 350,
     "categoria": "Ferramenta",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -206,7 +233,7 @@ export const listaProdutos = [
     "preco": 4000,
     "categoria": "Eletrodoméstico",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -222,7 +249,7 @@ export const listaProdutos = [
     "preco": 3,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -238,7 +265,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -254,7 +281,7 @@ export const listaProdutos = [
     "preco": 3000,
     "categoria": "Eletrodoméstico",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -270,7 +297,7 @@ export const listaProdutos = [
     "preco": 7,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -286,7 +313,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Roupa",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -302,7 +329,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -318,7 +345,7 @@ export const listaProdutos = [
     "preco": 6.2,
     "categoria": "Material Escolar",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -334,7 +361,7 @@ export const listaProdutos = [
     "preco": 12,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -350,7 +377,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -366,7 +393,7 @@ export const listaProdutos = [
     "preco": 45.99,
     "categoria": "Filme",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -382,7 +409,7 @@ export const listaProdutos = [
     "preco": 100,
     "categoria": "Revista",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -398,7 +425,7 @@ export const listaProdutos = [
     "preco": 10.99,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -414,7 +441,7 @@ export const listaProdutos = [
     "preco": 1000,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -430,7 +457,7 @@ export const listaProdutos = [
     "preco": 15,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -446,7 +473,7 @@ export const listaProdutos = [
     "preco": 1200,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -462,7 +489,7 @@ export const listaProdutos = [
     "preco": 200,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -478,7 +505,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -494,7 +521,7 @@ export const listaProdutos = [
     "preco": 100,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -510,7 +537,7 @@ export const listaProdutos = [
     "preco": 2,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -526,7 +553,7 @@ export const listaProdutos = [
     "preco": 6,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -542,7 +569,7 @@ export const listaProdutos = [
     "preco": 10,
     "categoria": "Bebida",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -558,7 +585,7 @@ export const listaProdutos = [
     "preco": 3,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -574,7 +601,7 @@ export const listaProdutos = [
     "preco": 9.5,
     "categoria": "Alimento",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -590,7 +617,7 @@ export const listaProdutos = [
     "preco": 800,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -606,7 +633,7 @@ export const listaProdutos = [
     "preco": 600,
     "categoria": "Computação",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -622,7 +649,7 @@ export const listaProdutos = [
     "preco": 1800,
     "categoria": "Eletrodoméstico",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",
@@ -638,7 +665,7 @@ export const listaProdutos = [
     "preco": 33,
     "categoria": "Eletrodoméstico",
     "descricao":
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deserunt dolores autem! Totam reprehenderit nemo animi minima rem harum? Aliquam quos expedita voluptatibus veritatis, cum voluptatum esse labore quia nam?",
     "imagem": [
       "https://loremflickr.com/640/480/transport",
       "https://loremflickr.com/640/480/dog",

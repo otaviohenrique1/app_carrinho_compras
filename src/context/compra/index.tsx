@@ -1,21 +1,10 @@
 import { Dispatch, FC, SetStateAction, createContext, ReactNode, useState } from "react";
-import { ListaProdutosTypes } from "../../utils/listaProdutos"
+import { ListaProdutosTypes } from "../../utils/listas"
 
 export type CarrinhoProdutoTypes = ListaProdutosTypes & {
   quantidade: number;
   precoQuantidade: number;
 }
-
-export const valoresIniciaisUmProduto: CarrinhoProdutoTypes = {
-  id: 0,
-  nome: "",
-  preco: 0,
-  categoria: "",
-  descricao: "",
-  imagem: [],
-  precoQuantidade: 0,
-  quantidade: 0,
-};
 
 export type CompraType = CarrinhoProdutoTypes[];
 

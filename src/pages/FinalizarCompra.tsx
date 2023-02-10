@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CompraContext } from "../context/compra";
 import { ListaItem } from "../components/ListaItem";
+import { listaMetodosPagamento } from "../utils/listas";
 
 interface FormTypes {
   metodo_pagamento: string;
@@ -80,42 +81,16 @@ export function FinalizarCompra() {
                     role="group"
                     aria-labelledby="radio-group-pagamento"
                   >
-                    <Radio
-                      name="metodo_pagamento"
-                      id="cartao"
-                      value="cartao"
-                      label={"Cartão"}
-                    />
-                    <Radio
-                      name="metodo_pagamento"
-                      id="boleto"
-                      value="boleto"
-                      label={"Boleto"}
-                    />
-                    <Radio
-                      name="metodo_pagamento"
-                      id="pix"
-                      value="pix"
-                      label={"Pix"}
-                    />
-                    <Radio
-                      name="metodo_pagamento"
-                      id="paypal"
-                      value="paypal"
-                      label={"Paypal"}
-                    />
-                    <Radio
-                      name="metodo_pagamento"
-                      id="credito_loja"
-                      value="credito"
-                      label={"Credito na loja"}
-                    />
-                    <Radio
-                      name="metodo_pagamento"
-                      id="transferencia"
-                      value="transferencia"
-                      label={"Transferencia bancaria"}
-                    />
+                    {listaMetodosPagamento.map((item, index) => {
+                      return (
+                        <Radio
+                          name="metodo_pagamento"
+                          id={item.value}
+                          value={item.value}
+                          label={item.label}
+                        />
+                      );
+                    })}
                   </RadioGroup>
                   <ContainerBotao>
                     <Botao

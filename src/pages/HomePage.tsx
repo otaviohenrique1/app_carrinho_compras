@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AppBar } from "../components/AppBar";
-import { listaProdutos } from "../utils/listaProdutos";
+import { listaProdutos } from "../utils/listas";
 import { formatadorMonetario } from "../utils/formatadores";
 import { Botao, ItemBotoes } from "../components/Botao";
 import { Main } from "../components/Main";
@@ -50,6 +50,7 @@ export function HomePage() {
                         precoQuantidade: item.preco * 1,
                       };
                       adicionarProduto(data, item.id);
+                      navigation("/carrinho");
                     }}
                     color="#008000"
                     font_color="#ffffff"
