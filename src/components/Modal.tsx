@@ -72,7 +72,7 @@ export function ModalFinalizarCompra(props: ModalFinalizarCompraProps) {
         fontSize="15px"
       />
     </div>,
-    confirmButtonText: 'Voltar ao inicio',
+    confirmButtonText: 'Voltar ao início',
     confirmButtonColor: "blue",
   });
 }

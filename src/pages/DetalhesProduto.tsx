@@ -98,7 +98,7 @@ export function DetalhesProduto() {
                 font_color_hover="#000000"
                 color_active="#4d004d"
                 font_color_active="#ffffff"
-              >Inicio</Botao>
+              >Início</Botao>
           </div>
         </DetalhesLista>
       </Main>
